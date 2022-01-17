@@ -15,6 +15,10 @@ const MetronomeProvider = ({ children }) => {
   const [barLength, setBarLength] = useState(2);
   const [isStressing, setIsStressing] = useState(false);
 
+  const intervalRef = useRef();
+  const audioContext = useRef(null);
+  const tempoRef = useRef(tempo);
+
   return <MetronomeContext.Provider>{children}</MetronomeContext.Provider>;
 };
 
