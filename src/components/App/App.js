@@ -1,7 +1,12 @@
 import "../../assets/styles/App.css";
+import MetronomeInterface from "./MetronomeInterface/MetronomeInterface";
 
 function App() {
-  return <div>Lorem ipsum dolor sit amet.</div>;
+  return (
+    <main>
+      <MetronomeInterface />
+    </main>
+  );
 }
 
 export default App;
