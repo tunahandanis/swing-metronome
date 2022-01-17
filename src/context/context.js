@@ -19,6 +19,11 @@ const MetronomeProvider = ({ children }) => {
   const audioContext = useRef(null);
   const tempoRef = useRef(tempo);
 
+  let timeBetweenBeats;
+  let currentSubNote = 0;
+  let currentQuarterNote = 0;
+  let nextNoteTime = 0.0;
+
   return <MetronomeContext.Provider>{children}</MetronomeContext.Provider>;
 };
 
