@@ -32,6 +32,17 @@ const MetronomeProvider = ({ children }) => {
   const tempoRef = useRef(tempo);
 
   /*
+  ============
+  EFFECT HOOKS
+  ============
+  */
+
+  useEffect(() => {
+    // Keeping tempo global for affecting inside functions
+    tempoRef.current = tempo;
+  }, [tempo]);
+
+  /*
   ==========================
   GLOBAL/TEMPORARY VARIABLES
   ==========================
