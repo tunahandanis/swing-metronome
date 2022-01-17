@@ -1,18 +1,34 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useMetronomeContext } from "../../../context/context";
 
 const MetronomeInterface = () => {
+  const { tempo, setTempo, isRunning, startStop } = useMetronomeContext();
+
+  // Range ref hook
+
+  const rangeRef = useRef();
+
+  // Functions for increasing/decreasing bpm by buttons
+
+  const stepUp = () => {
+    if (tempo < rangeRef.current.max) setTempo((prev) => prev + 1);
+  };
+
+  const stepDown = () => {
+    if (tempo > rangeRef.current.min) setTempo((prev) => prev - 1);
+  };
+
   return (
     <section>
       <h1>
-        <span>60</span>BPM
+        <span>{tempo}</span>BPM
       </h1>
       <div>
-        <button>&ndash;</button>
-        <input type="range" min={30} max={250} />
-        <button>+</button>
+        <button onClick={stepDown}>&ndash;</button>
+        <input ref={rangeRef} type="range" min={30} max={250} />
+        <button onClick={stepUp}>+</button>
       </div>
-      <button>Start/Stop</button>
+      <button onClick={startStop}>Start/Stop</button>
     </section>
   );
 };
