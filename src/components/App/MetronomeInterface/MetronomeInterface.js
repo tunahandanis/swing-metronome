@@ -25,7 +25,13 @@ const MetronomeInterface = () => {
       </h1>
       <div>
         <button onClick={stepDown}>&ndash;</button>
-        <input ref={rangeRef} type="range" min={30} max={250} />
+        <input
+          ref={rangeRef}
+          type="range"
+          min={30}
+          max={250}
+          onChange={(e) => setTempo(parseInt(e.target.value))}
+        />
         <button onClick={stepUp}>+</button>
       </div>
       <button onClick={startStop}>Start/Stop</button>
