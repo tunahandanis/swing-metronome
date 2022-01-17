@@ -151,7 +151,24 @@ const MetronomeProvider = ({ children }) => {
   ================
   */
 
-  return <MetronomeContext.Provider>{children}</MetronomeContext.Provider>;
+  return (
+    <MetronomeContext.Provider
+      value={{
+        isRunning,
+        startStop,
+        tempo,
+        setTempo,
+        subdivision,
+        setSubdivision,
+        barLength,
+        setBarLength,
+        isStressing,
+        setIsStressing,
+      }}
+    >
+      {children}
+    </MetronomeContext.Provider>
+  );
 };
 
 const useMetronomeContext = () => {
