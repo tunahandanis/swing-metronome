@@ -12,4 +12,8 @@ const MetronomeProvider = ({ children }) => {
   return <MetronomeContext.Provider>{children}</MetronomeContext.Provider>;
 };
 
-export { MetronomeProvider };
+const useMetronomeContext = () => {
+  return useContext(MetronomeContext);
+};
+
+export { MetronomeProvider, useMetronomeContext };

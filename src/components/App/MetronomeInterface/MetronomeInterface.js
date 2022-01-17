@@ -1,4 +1,5 @@
 import React from "react";
+import { useMetronomeContext } from "../../../context/context";
 
 const MetronomeInterface = () => {
   return (
