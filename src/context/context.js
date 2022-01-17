@@ -1,4 +1,10 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
+import {
+  scheduleAheadTime,
+  lookahead,
+  noteLength,
+  currentSubLength,
+} from "../config/metronomeConfig";
 
 const MetronomeContext = React.createContext();
 
