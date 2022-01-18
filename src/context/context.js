@@ -1,4 +1,14 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useContext,
+  useReducer,
+} from "react";
+
+import reducer from "../reducer/reducer";
+import ACTIONS from "../reducer/actionTypes";
+
 import {
   scheduleAheadTime,
   lookahead,
@@ -8,18 +18,24 @@ import {
 
 const MetronomeContext = React.createContext();
 
+// INITIAL STATE FOR REDUCER
+
+const initialState = {
+  isRunning: false,
+  tempo: 60,
+  subdivision: "Quarter",
+  barLength: 2,
+  isStressing: false,
+};
+
 const MetronomeProvider = ({ children }) => {
   /*
-  ===========
-  STATE HOOKS
-  ===========
+  =======
+  REDUCER
+  =======
   */
 
-  const [isRunning, setIsRunning] = useState(false);
-  const [tempo, setTempo] = useState(60);
-  const [subdivision, setSubdivision] = useState("Quarter");
-  const [barLength, setBarLength] = useState(2);
-  const [isStressing, setIsStressing] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   /*
   =========
@@ -66,9 +82,15 @@ const MetronomeProvider = ({ children }) => {
   let nextNoteTime = 0.0;
 
   /*
-  =========
-  FUNCTIONS
-  =========
+  ==================
+  DISPATCH FUNCTIONS
+  ==================
+  */
+
+  /*
+  ===============
+  METRONOME LOGIC
+  ===============
   */
 
   const start = () => {

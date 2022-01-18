@@ -25,3 +25,5 @@ const reducer = (state, action) => {
       return { ...state, barLength: state.barLength - 1 };
   }
 };
+
+export default reducer;
