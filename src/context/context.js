@@ -38,6 +38,14 @@ const MetronomeProvider = ({ children }) => {
   */
 
   useEffect(() => {
+    // Resetting metronome after specified changes to adjust new notes
+    if (isRunning) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = setInterval(scheduler, lookahead);
+    }
+  }, [subdivision, barLength, isStressing]);
+
+  useEffect(() => {
     // Keeping tempo global for affecting inside functions
     tempoRef.current = tempo;
   }, [tempo]);
