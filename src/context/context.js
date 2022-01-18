@@ -37,6 +37,8 @@ const MetronomeProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const { isRunning, tempo, subdivision, barLength, isStressing } = state;
+
   /*
   =========
   REF HOOKS
@@ -86,6 +88,56 @@ const MetronomeProvider = ({ children }) => {
   DISPATCH FUNCTIONS
   ==================
   */
+
+  // TURN ON/OFF
+
+  const turnOn = () => {
+    dispatch({ type: ACTIONS.START });
+  };
+
+  const turnOff = () => {
+    dispatch({ type: ACTIONS.STOP });
+  };
+
+  // CHANGE TEMPO
+
+  const increaseTempo = () => {
+    dispatch({ type: ACTIONS.INCREASE_TEMPO });
+  };
+
+  const decreaseTempo = () => {
+    dispatch({ type: ACTIONS.DECREASE_TEMPO });
+  };
+
+  const slideTempo = (e) => {
+    dispatch({
+      type: ACTIONS.SLIDE_TEMPO,
+      payload: { newTempo: e.target.value },
+    });
+  };
+
+  // CHANGE SUBDIVISION
+
+  const changeSubdivision = (e) => {
+    dispatch({
+      type: ACTIONS.CHANGE_SUBDIVISION,
+      payload: { newSubdivision: e.target.value },
+    });
+  };
+
+  // CHANGE STRESSING/BAR LENGTH
+
+  const toggleStressing = () => {
+    dispatch({ type: ACTIONS.TOGGLE_STRESSING });
+  };
+
+  const increaseBarLength = () => {
+    dispatch({ type: ACTIONS.INCREASE_BAR_LENGTH });
+  };
+
+  const decreaseBarLength = () => {
+    dispatch({ type: ACTIONS.DECREASE_BAR_LENGTH });
+  };
 
   /*
   ===============
