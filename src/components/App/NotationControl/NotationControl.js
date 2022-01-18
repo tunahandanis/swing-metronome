@@ -2,6 +2,15 @@ import React from "react";
 import { useMetronomeContext } from "../../../context/context";
 
 const NotationControl = () => {
+  const {
+    setSubdivision,
+    barLength,
+    setBarLength,
+    setIsStressing,
+    isStressing,
+    subdivision,
+  } = useMetronomeContext();
+
   return (
     <section>
       <ul>
