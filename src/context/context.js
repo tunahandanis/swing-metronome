@@ -112,7 +112,7 @@ const MetronomeProvider = ({ children }) => {
   const slideTempo = (e) => {
     dispatch({
       type: ACTIONS.SLIDE_TEMPO,
-      payload: { newTempo: e.target.value },
+      payload: { newTempo: e },
     });
   };
 
@@ -121,7 +121,7 @@ const MetronomeProvider = ({ children }) => {
   const changeSubdivision = (e) => {
     dispatch({
       type: ACTIONS.CHANGE_SUBDIVISION,
-      payload: { newSubdivision: e.target.value },
+      payload: { newSubdivision: e },
     });
   };
 
@@ -153,7 +153,7 @@ const MetronomeProvider = ({ children }) => {
     if (audioContext.current === null)
       audioContext.current = new AudioContext();
 
-    setIsRunning(true);
+    turnOn();
 
     // Resetting the beat number in bar
     currentQuarterNote = 0;
@@ -168,7 +168,7 @@ const MetronomeProvider = ({ children }) => {
   const stop = () => {
     // Stopping the whole system
 
-    setIsRunning(false);
+    turnOff();
 
     clearInterval(intervalRef.current);
   };
@@ -250,13 +250,16 @@ const MetronomeProvider = ({ children }) => {
         isRunning,
         startStop,
         tempo,
-        setTempo,
+        slideTempo,
+        increaseTempo,
+        decreaseTempo,
         subdivision,
-        setSubdivision,
+        changeSubdivision,
         barLength,
-        setBarLength,
+        increaseBarLength,
+        decreaseBarLength,
         isStressing,
-        setIsStressing,
+        toggleStressing,
       }}
     >
       {children}

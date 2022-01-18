@@ -3,43 +3,46 @@ import { useMetronomeContext } from "../../../context/context";
 
 const NotationControl = () => {
   const {
-    setSubdivision,
-    barLength,
-    setBarLength,
-    setIsStressing,
-    isStressing,
     subdivision,
+    changeSubdivision,
+    barLength,
+    increaseBarLength,
+    decreaseBarLength,
+    isStressing,
+    toggleStressing,
   } = useMetronomeContext();
 
   // FUNCTIONS FOR INCREASING/DECREASING BEAT NUMBER IN BAR
 
   const beatUp = () => {
-    if (barLength < 12) setBarLength((prev) => prev + 1);
+    if (barLength < 12) increaseBarLength();
   };
 
   const beatDown = () => {
-    if (barLength > 2) setBarLength((prev) => prev - 1);
+    if (barLength > 2) decreaseBarLength();
   };
 
   return (
     <section>
       <ul>
         <li>
-          <button onClick={() => setSubdivision("Quarter")}>Quarter</button>
+          <button onClick={() => changeSubdivision("Quarter")}>Quarter</button>
         </li>
         <li>
-          <button onClick={() => setSubdivision("Eighth")}>Eighth</button>
+          <button onClick={() => changeSubdivision("Eighth")}>Eighth</button>
         </li>
         <li>
-          <button onClick={() => setSubdivision("Sixteenth")}>Sixteenth</button>
+          <button onClick={() => changeSubdivision("Sixteenth")}>
+            Sixteenth
+          </button>
         </li>
         <li>
-          <button onClick={() => setSubdivision("Triplet")}>Triplet</button>
+          <button onClick={() => changeSubdivision("Triplet")}>Triplet</button>
         </li>
       </ul>
 
       <div>
-        <button onClick={() => setIsStressing((prev) => !prev)}>Stress</button>
+        <button onClick={toggleStressing}>Stress</button>
         <div>
           <button onClick={beatDown}>-</button>
           <h3>{barLength}</h3>
