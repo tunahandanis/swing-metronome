@@ -69,7 +69,7 @@ const MetronomeProvider = ({ children }) => {
       clearInterval(intervalRef.current);
       intervalRef.current = setInterval(scheduler, lookahead);
     }
-  }, [subdivision, barLength, isStressing]);
+  }, [subdivision, barLength, isStressing, swingPercentage]);
 
   useEffect(() => {
     // Keeping tempo global for affecting inside functions
@@ -83,11 +83,13 @@ const MetronomeProvider = ({ children }) => {
   */
 
   // These can reset between re-renders, no problem
+
   let timeBetweenBeats;
 
-  // These are for adjusting subdivision notes and stressed notes, counting the queue
+  // These are for adjusting subdivision notes, stressed notes and swing notes, counting the queue
   let currentSubNote = 0;
   let currentQuarterNote = 0;
+  let currentSwingNote = 0;
 
   let nextNoteTime = 0.0;
 
@@ -171,6 +173,8 @@ const MetronomeProvider = ({ children }) => {
 
     // Resetting the beat number in bar
     currentQuarterNote = 0;
+    currentSubNote = 0;
+    currentSwingNote = 0;
 
     // Setting the first note's time to present
     nextNoteTime = audioContext.current.currentTime + 0.1;
@@ -239,17 +243,26 @@ const MetronomeProvider = ({ children }) => {
     // Adjusting time between two beats according to tempo and sub-division
     timeBetweenBeats = 60.0 / tempoRef.current / currentSubLength(subdivision);
 
+    if (currentSwingNote === 0) {
+      nextNoteTime += timeBetweenBeats * ((swingPercentage * 2) / 100);
+    } else if ((currentSwingNote = 1)) {
+      nextNoteTime += timeBetweenBeats * (((100 - swingPercentage) * 2) / 100);
+    }
+
+    console.log(nextNoteTime);
+    console.log(currentSwingNote);
     // Adding that to next note's time
-    nextNoteTime += timeBetweenBeats;
 
     // Counting for sub-notes and stressing
     currentQuarterNote++;
     currentSubNote++;
+    currentSwingNote++;
 
-    // Checking reset for sub-notes and stressing
+    // Checking reset for sub-notes, swing and stressing
     if (currentQuarterNote === barLength * currentSubLength(subdivision))
       currentQuarterNote = 0;
     if (currentSubNote === currentSubLength(subdivision)) currentSubNote = 0;
+    if (currentSwingNote === 2) currentSwingNote = 0;
   };
 
   /*
