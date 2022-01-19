@@ -41,6 +41,7 @@ const MetronomeInterface = () => {
         />
         <button onClick={stepUp}>+</button>
       </div>
+      <input type="range" min={0} max={100} onChange={() => {}} />
       <button onClick={startStop}>Start/Stop</button>
     </section>
   );
