@@ -23,6 +23,7 @@ const MetronomeContext = React.createContext();
 const initialState = {
   isRunning: false,
   tempo: 60,
+  swingPercentage: 50,
   subdivision: "Quarter",
   barLength: 2,
   isStressing: false,
@@ -37,7 +38,14 @@ const MetronomeProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { isRunning, tempo, subdivision, barLength, isStressing } = state;
+  const {
+    isRunning,
+    tempo,
+    subdivision,
+    barLength,
+    isStressing,
+    swingPercentage,
+  } = state;
 
   /*
   =========
@@ -253,6 +261,7 @@ const MetronomeProvider = ({ children }) => {
         slideTempo,
         increaseTempo,
         decreaseTempo,
+        swingPercentage,
         subdivision,
         changeSubdivision,
         barLength,
