@@ -124,6 +124,12 @@ const MetronomeProvider = ({ children }) => {
     });
   };
 
+  // CHANGE SWING PERCENTAGE
+
+  const slideSwing = (e) => {
+    dispatch({ type: ACTIONS.SLIDE_SWING, payload: { newSwing: e } });
+  };
+
   // CHANGE SUBDIVISION
 
   const changeSubdivision = (e) => {

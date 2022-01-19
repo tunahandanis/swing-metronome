@@ -15,7 +15,7 @@ const reducer = (state, action) => {
       return { ...state, tempo: state.tempo - 1 };
 
     case ACTIONS.SLIDE_SWING:
-      return { ...state, swingPercentage: action.payload.swingPercentage };
+      return { ...state, swingPercentage: action.payload.newSwing };
 
     case ACTIONS.CHANGE_SUBDIVISION:
       return { ...state, subdivision: action.payload.newSubdivision };
