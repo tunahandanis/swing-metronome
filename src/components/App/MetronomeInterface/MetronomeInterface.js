@@ -7,6 +7,8 @@ const MetronomeInterface = () => {
     increaseTempo,
     decreaseTempo,
     slideTempo,
+    swingPercentage,
+    slideSwing,
     isRunning,
     startStop,
   } = useMetronomeContext();
@@ -41,7 +43,15 @@ const MetronomeInterface = () => {
         />
         <button onClick={stepUp}>+</button>
       </div>
-      <input type="range" min={0} max={100} onChange={() => {}} />
+      <div>
+        <h1>Swing Percentage: {swingPercentage}%</h1>
+        <input
+          type="range"
+          min={0}
+          max={100}
+          onChange={(e) => slideSwing(parseInt(e.target.value))}
+        />
+      </div>
       <button onClick={startStop}>Start/Stop</button>
     </section>
   );

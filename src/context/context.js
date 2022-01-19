@@ -268,6 +268,7 @@ const MetronomeProvider = ({ children }) => {
         increaseTempo,
         decreaseTempo,
         swingPercentage,
+        slideSwing,
         subdivision,
         changeSubdivision,
         barLength,
