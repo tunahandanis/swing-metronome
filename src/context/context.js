@@ -250,7 +250,6 @@ const MetronomeProvider = ({ children }) => {
     }
 
     console.log(nextNoteTime);
-    console.log(currentSwingNote);
     // Adding that to next note's time
 
     // Counting for sub-notes and stressing
