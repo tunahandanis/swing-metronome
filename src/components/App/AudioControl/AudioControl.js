@@ -5,8 +5,6 @@ const AudioControl = () => {
   const { quarterAudios, subAudios, toggleQuarterAudios, toggleSubAudios } =
     useMetronomeContext();
 
-  console.log(subAudios);
-
   const drumAudios = [
     "Snare",
     "Hi-hat Open",

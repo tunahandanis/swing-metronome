@@ -317,7 +317,7 @@ const MetronomeProvider = ({ children }) => {
       osc.start(time);
       osc.stop(time + 0.025);
     } else {
-      const source = audioContext.current.createBufferSource();
+      /* const source = audioContext.current.createBufferSource();
 
       source.buffer =
         currentSubNote === 0
@@ -327,7 +327,35 @@ const MetronomeProvider = ({ children }) => {
       source.connect(audioContext.current.destination);
 
       source.start(time);
-      source.stop(time + 0.35);
+      source.stop(time + 0.35); */
+
+      if (currentSubNote === 0) {
+        for (let audio in quarterAudios) {
+          if (quarterAudios[audio]) {
+            const source = audioContext.current.createBufferSource();
+
+            source.buffer = audioFilesRef.current[audio];
+
+            source.connect(audioContext.current.destination);
+
+            source.start(time);
+            source.stop(time + 0.35);
+          }
+        }
+      } else {
+        for (let audio in subAudios) {
+          if (subAudios[audio]) {
+            const source = audioContext.current.createBufferSource();
+
+            source.buffer = audioFilesRef.current[audio];
+
+            source.connect(audioContext.current.destination);
+
+            source.start(time);
+            source.stop(time + 0.35);
+          }
+        }
+      }
     }
   };
 
