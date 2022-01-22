@@ -26,6 +26,26 @@ const reducer = (state, action) => {
       return { ...state, barLength: state.barLength + 1 };
     case ACTIONS.DECREASE_BAR_LENGTH:
       return { ...state, barLength: state.barLength - 1 };
+
+    case ACTIONS.TOGGLE_QUARTER_AUDIOS:
+      return {
+        ...state,
+        quarterAudios: {
+          ...quarterAudios,
+          [action.payload.toggledAudio]:
+            !quarterAudios[action.payload.toggledAudio],
+        },
+      };
+
+    case ACTIONS.TOGGLE_SUB_AUDIOS:
+      return {
+        ...state,
+        subAudios: {
+          ...subAudios,
+          [action.payload.toggledAudio]:
+            !subAudios[action.payload.toggledAudio],
+        },
+      };
   }
 };
 
