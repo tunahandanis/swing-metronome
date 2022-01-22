@@ -270,7 +270,10 @@ const MetronomeProvider = ({ children }) => {
 
     const source = audioContext.current.createBufferSource();
 
-    source.buffer = audioFilesRef.current.hihatClosed;
+    source.buffer =
+      currentSubNote === 0
+        ? audioFilesRef.current.snare
+        : audioFilesRef.current.hihatClosed;
 
     source.connect(audioContext.current.destination);
 
