@@ -31,9 +31,9 @@ const reducer = (state, action) => {
       return {
         ...state,
         quarterAudios: {
-          ...quarterAudios,
+          ...state.quarterAudios,
           [action.payload.toggledAudio]:
-            !quarterAudios[action.payload.toggledAudio],
+            !state.quarterAudios[action.payload.toggledAudio],
         },
       };
 
@@ -41,9 +41,9 @@ const reducer = (state, action) => {
       return {
         ...state,
         subAudios: {
-          ...subAudios,
+          ...state.subAudios,
           [action.payload.toggledAudio]:
-            !subAudios[action.payload.toggledAudio],
+            !state.subAudios[action.payload.toggledAudio],
         },
       };
   }
