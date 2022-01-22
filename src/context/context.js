@@ -268,17 +268,28 @@ const MetronomeProvider = ({ children }) => {
     osc.start(time);
     osc.stop(time + noteLength); */
 
-    const source = audioContext.current.createBufferSource();
+    const stressing =
+      isStressing && currentSubNote === 0 && currentQuarterNote === 0;
 
-    source.buffer =
-      currentSubNote === 0
-        ? audioFilesRef.current.snare
-        : audioFilesRef.current.hihatClosed;
+    if (stressing) {
+      const osc = audioContext.current.createOscillator();
+      osc.frequency.value = 1500;
+      osc.connect(audioContext.current.destination);
+      osc.start(time);
+      osc.stop(time + 0.025);
+    } else {
+      const source = audioContext.current.createBufferSource();
 
-    source.connect(audioContext.current.destination);
+      source.buffer =
+        currentSubNote === 0
+          ? audioFilesRef.current.snare
+          : audioFilesRef.current.hihatClosed;
 
-    source.start(time);
-    source.stop(time + 0.35);
+      source.connect(audioContext.current.destination);
+
+      source.start(time);
+      source.stop(time + 0.35);
+    }
   };
 
   const nextNote = () => {
