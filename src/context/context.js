@@ -18,6 +18,9 @@ import {
 
 import snareFile from "../assets/audio/snare.mp3";
 import hihatClosedFile from "../assets/audio/hihat closed.mp3";
+import hihatOpenFile from "../assets/audio/hihat open.mp3";
+import sticksFile from "../assets/audio/sticks.mp3";
+import bassDrumFile from "../assets/audio/bass drum.mp3";
 
 const MetronomeContext = React.createContext();
 
@@ -192,7 +195,13 @@ const MetronomeProvider = ({ children }) => {
     if (audioContext.current === null) {
       audioContext.current = new AudioContext();
 
-      const audioFiles = { snare: snareFile, hihatClosed: hihatClosedFile };
+      const audioFiles = {
+        snare: snareFile,
+        hihatClosed: hihatClosedFile,
+        hihatOpen: hihatOpenFile,
+        sticks: sticksFile,
+        bassDrum: bassDrumFile,
+      };
 
       for (let audioName in audioFiles) {
         processAudio(audioName, audioFiles[audioName]);
@@ -282,8 +291,8 @@ const MetronomeProvider = ({ children }) => {
 
       source.buffer =
         currentSubNote === 0
-          ? audioFilesRef.current.snare
-          : audioFilesRef.current.hihatClosed;
+          ? audioFilesRef.current.bassDrum
+          : audioFilesRef.current.sticks;
 
       source.connect(audioContext.current.destination);
 
