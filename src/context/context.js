@@ -16,6 +16,8 @@ import {
   currentSubLength,
 } from "../config/metronomeConfig";
 
+import snareFile from "../assets/audio/snare.mp3";
+
 const MetronomeContext = React.createContext();
 
 // INITIAL STATE FOR REDUCER
@@ -56,6 +58,10 @@ const MetronomeProvider = ({ children }) => {
   const intervalRef = useRef();
   const audioContext = useRef(null);
   const tempoRef = useRef(tempo);
+
+  // Audio file references
+
+  const snareRef = useRef();
 
   /*
   ============
@@ -156,6 +162,22 @@ const MetronomeProvider = ({ children }) => {
   };
 
   /*
+  ===========
+  FETCH AUDIO
+  ===========
+  */
+
+  const fetchAudio = async () => {
+    const response = await fetch(snareFile);
+    const arrayBuffer = await response.arrayBuffer();
+    const decodedAudio = await audioContext.current.decodeAudioData(
+      arrayBuffer
+    );
+
+    snareRef.current = decodedAudio;
+  };
+
+  /*
   ===============
   METRONOME LOGIC
   ===============
@@ -166,8 +188,10 @@ const MetronomeProvider = ({ children }) => {
     if (isRunning) return;
 
     // Creating audio context
-    if (audioContext.current === null)
+    if (audioContext.current === null) {
       audioContext.current = new AudioContext();
+      fetchAudio();
+    }
 
     turnOn();
 
@@ -210,7 +234,7 @@ const MetronomeProvider = ({ children }) => {
   };
 
   const scheduleNote = (time) => {
-    // Oscillator for playing the beep
+    /* // Oscillator for playing the beep
     const osc = audioContext.current.createOscillator();
 
     // For adjusting volume
@@ -236,7 +260,16 @@ const MetronomeProvider = ({ children }) => {
 
     // Start and stop the beep at specific times
     osc.start(time);
-    osc.stop(time + noteLength);
+    osc.stop(time + noteLength); */
+
+    const source = audioContext.current.createBufferSource();
+
+    source.buffer = snareRef.current;
+
+    source.connect(audioContext.current.destination);
+
+    source.start(time);
+    source.stop(time + 0.35);
   };
 
   const nextNote = () => {
