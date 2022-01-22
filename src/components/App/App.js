@@ -1,6 +1,7 @@
 import "../../assets/styles/App.css";
 import MetronomeInterface from "./MetronomeInterface/MetronomeInterface";
 import NotationControl from "./NotationControl/NotationControl";
+import AudioControl from "./AudioControl/AudioControl";
 import { MetronomeProvider } from "../../context/context";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <MetronomeProvider>
         <MetronomeInterface />
         <NotationControl />
+        <AudioControl />
       </MetronomeProvider>
     </main>
   );
