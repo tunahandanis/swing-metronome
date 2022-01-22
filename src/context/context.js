@@ -17,6 +17,7 @@ import {
 } from "../config/metronomeConfig";
 
 import snareFile from "../assets/audio/snare.mp3";
+import hihatClosedFile from "../assets/audio/hihat closed.mp3";
 
 const MetronomeContext = React.createContext();
 
@@ -61,7 +62,7 @@ const MetronomeProvider = ({ children }) => {
 
   // Audio file references
 
-  const snareRef = useRef();
+  const audioFilesRef = useRef({ snare: null, hihatClosed: null });
 
   /*
   ============
@@ -167,14 +168,14 @@ const MetronomeProvider = ({ children }) => {
   ===========
   */
 
-  const fetchAudio = async () => {
-    const response = await fetch(snareFile);
+  const processAudio = async (fileName, file) => {
+    const response = await fetch(file);
     const arrayBuffer = await response.arrayBuffer();
     const decodedAudio = await audioContext.current.decodeAudioData(
       arrayBuffer
     );
 
-    snareRef.current = decodedAudio;
+    audioFilesRef.current[fileName] = decodedAudio;
   };
 
   /*
@@ -187,10 +188,15 @@ const MetronomeProvider = ({ children }) => {
     // If it's already running, return
     if (isRunning) return;
 
-    // Creating audio context
+    // Creating audio context and fetching/processing audio files
     if (audioContext.current === null) {
       audioContext.current = new AudioContext();
-      fetchAudio();
+
+      const audioFiles = { snare: snareFile, hihatClosed: hihatClosedFile };
+
+      for (let audioName in audioFiles) {
+        processAudio(audioName, audioFiles[audioName]);
+      }
     }
 
     turnOn();
@@ -264,7 +270,7 @@ const MetronomeProvider = ({ children }) => {
 
     const source = audioContext.current.createBufferSource();
 
-    source.buffer = snareRef.current;
+    source.buffer = audioFilesRef.current.hihatClosed;
 
     source.connect(audioContext.current.destination);
 
