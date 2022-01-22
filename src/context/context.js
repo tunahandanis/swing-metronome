@@ -33,6 +33,20 @@ const initialState = {
   subdivision: "Quarter",
   barLength: 2,
   isStressing: false,
+  quarterAudios: {
+    snare: false,
+    hihatOpen: false,
+    hihatClosed: false,
+    bassDrum: false,
+    sticks: false,
+  },
+  subAudios: {
+    snare: false,
+    hihatOpen: false,
+    hihatClosed: false,
+    bassDrum: false,
+    sticks: false,
+  },
 };
 
 const MetronomeProvider = ({ children }) => {
@@ -51,6 +65,8 @@ const MetronomeProvider = ({ children }) => {
     barLength,
     isStressing,
     swingPercentage,
+    quarterAudios,
+    subAudios,
   } = state;
 
   /*
@@ -65,7 +81,7 @@ const MetronomeProvider = ({ children }) => {
 
   // Audio file references
 
-  const audioFilesRef = useRef({ snare: null, hihatClosed: null });
+  const audioFilesRef = useRef({});
 
   /*
   ============
@@ -163,6 +179,20 @@ const MetronomeProvider = ({ children }) => {
 
   const decreaseBarLength = () => {
     dispatch({ type: ACTIONS.DECREASE_BAR_LENGTH });
+  };
+
+  const toggleQuarterAudios = (e) => {
+    dispatch({
+      type: ACTIONS.TOGGLE_QUARTER_AUDIOS,
+      payload: { toggledAudio: e },
+    });
+  };
+
+  const toggleSubAudios = (e) => {
+    dispatch({
+      type: ACTIONS.TOGGLE_SUB_AUDIOS,
+      payload: { toggledAudio: e },
+    });
   };
 
   /*
@@ -350,6 +380,10 @@ const MetronomeProvider = ({ children }) => {
         decreaseBarLength,
         isStressing,
         toggleStressing,
+        quarterAudios,
+        subAudios,
+        toggleQuarterAudios,
+        toggleSubAudios,
       }}
     >
       {children}
