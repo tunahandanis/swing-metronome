@@ -47,6 +47,8 @@ const initialState = {
     bassDrum: false,
     sticks: false,
   },
+  quarterFrequency: 800,
+  subFrequency: 600,
 };
 
 const MetronomeProvider = ({ children }) => {
@@ -67,6 +69,8 @@ const MetronomeProvider = ({ children }) => {
     swingPercentage,
     quarterDrumAudios,
     subDrumAudios,
+    quarterFrequency,
+    subFrequency,
   } = state;
 
   /*
@@ -425,6 +429,8 @@ const MetronomeProvider = ({ children }) => {
         subDrumAudios,
         toggleQuarterDrumAudios,
         toggleSubDrumAudios,
+        quarterFrequency,
+        subFrequency,
       }}
     >
       {children}
