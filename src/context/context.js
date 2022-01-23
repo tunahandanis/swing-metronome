@@ -232,6 +232,22 @@ const MetronomeProvider = ({ children }) => {
     });
   };
 
+  // SET SOUND TYPES
+
+  const setQuarterSoundType = (e) => {
+    dispatch({
+      type: ACTIONS.SET_QUARTER_SOUND_TYPE,
+      payload: { newSoundType: e },
+    });
+  };
+
+  const setSubSoundType = (e) => {
+    dispatch({
+      type: ACTIONS.SET_SUB_SOUND_TYPE,
+      payload: { newSoundType: e },
+    });
+  };
+
   /*
   ===========
   FETCH AUDIO
@@ -455,6 +471,8 @@ const MetronomeProvider = ({ children }) => {
         slideSubFrequency,
         quarterSoundType,
         subSoundType,
+        setQuarterSoundType,
+        setSubSoundType,
       }}
     >
       {children}
