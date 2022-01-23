@@ -49,6 +49,8 @@ const initialState = {
   },
   quarterFrequency: 800,
   subFrequency: 600,
+  isQuarterSoundArtificial,
+  isSubSoundArtificial,
 };
 
 const MetronomeProvider = ({ children }) => {
@@ -71,6 +73,8 @@ const MetronomeProvider = ({ children }) => {
     subDrumAudios,
     quarterFrequency,
     subFrequency,
+    isQuarterSoundArtificial,
+    isSubSoundArtificial,
   } = state;
 
   /*
@@ -449,6 +453,8 @@ const MetronomeProvider = ({ children }) => {
         subFrequency,
         slideQuarterFrequency,
         slideSubFrequency,
+        isQuarterSoundArtificial,
+        isSubSoundArtificial,
       }}
     >
       {children}
