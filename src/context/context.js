@@ -93,6 +93,7 @@ const MetronomeProvider = ({ children }) => {
   const swingRef = useRef(swingPercentage);
   const quarterFrequencyRef = useRef(quarterFrequency);
   const subFrequencyRef = useRef(subFrequency);
+  const stressFrequencyRef = useRef(stressFrequency);
 
   // Audio file references
 
@@ -119,7 +120,6 @@ const MetronomeProvider = ({ children }) => {
     subDrumAudios,
     quarterSoundType,
     subSoundType,
-    stressFrequency,
   ]);
 
   useEffect(() => {
@@ -128,7 +128,8 @@ const MetronomeProvider = ({ children }) => {
     swingRef.current = swingPercentage;
     quarterFrequencyRef.current = quarterFrequency;
     subFrequencyRef.current = subFrequency;
-  }, [tempo, swingPercentage, quarterFrequency, subFrequency]);
+    stressFrequencyRef.current = stressFrequency;
+  }, [tempo, swingPercentage, quarterFrequency, subFrequency, stressFrequency]);
 
   /*
   ==========================
@@ -350,41 +351,13 @@ const MetronomeProvider = ({ children }) => {
   };
 
   const scheduleNote = (time) => {
-    /* // Oscillator for playing the beep
-    const osc = audioContext.current.createOscillator();
-
-    // For adjusting volume
-    const gainNode = audioContext.current.createGain();
-
-    // Checking if beat will be stressed or not
-    const stressing =
-      isStressing && currentSubNote === 0 && currentQuarterNote === 0;
-
-    // Frequency difference between sub notes and quarter note
-    osc.frequency.value = currentSubNote === 0 ? 600 : 400;
-    // Frequency difference between stressed and non-stressed quarter notes
-    osc.frequency.value = stressing ? 1500 : osc.frequency.value;
-
-    // Connect oscillator to gain node for volume control
-    osc.connect(gainNode);
-
-    // If the note is a sub-note, decrease the volume a little
-    gainNode.gain.value = currentSubNote === 0 ? 1 : 0.6;
-
-    // Connect whole system to speakers
-    gainNode.connect(audioContext.current.destination);
-
-    // Start and stop the beep at specific times
-    osc.start(time);
-    osc.stop(time + noteLength); */
-
     const stressing =
       isStressing && currentSubNote === 0 && currentQuarterNote === 0;
 
     // CHECK IF THE NEXT NOTE WILL BE STRESSED
     if (stressing) {
       const osc = audioContext.current.createOscillator();
-      osc.frequency.value = 1200;
+      osc.frequency.value = stressFrequencyRef.current;
       osc.connect(audioContext.current.destination);
       osc.start(time);
       osc.stop(time + 0.025);
