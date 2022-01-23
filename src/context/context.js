@@ -447,6 +447,8 @@ const MetronomeProvider = ({ children }) => {
         toggleSubDrumAudios,
         quarterFrequency,
         subFrequency,
+        slideQuarterFrequency,
+        slideSubFrequency,
       }}
     >
       {children}

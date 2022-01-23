@@ -7,6 +7,10 @@ const AudioControl = () => {
     subDrumAudios,
     toggleQuarterDrumAudios,
     toggleSubDrumAudios,
+    quarterFrequency,
+    subFrequency,
+    slideQuarterFrequency,
+    slideSubFrequency,
   } = useMetronomeContext();
 
   return (
@@ -19,7 +23,16 @@ const AudioControl = () => {
           <button>Drum sounds</button>
         </div>
         <div>
-          <input type="range" min={200} max={4000} step={10} />
+          <h2>{quarterFrequency}</h2>
+
+          <input
+            type="range"
+            min={200}
+            max={4000}
+            step={10}
+            defaultValue={quarterFrequency}
+            onChange={(e) => slideQuarterFrequency(parseInt(e.target.value))}
+          />
         </div>
         <ul>
           {/*
@@ -84,7 +97,15 @@ const AudioControl = () => {
           <button>Drum sounds</button>
         </div>
         <div>
-          <input type="range" min={200} max={4000} step={10} />
+          <h2>{subFrequency}</h2>
+          <input
+            type="range"
+            min={200}
+            max={4000}
+            step={10}
+            defaultValue={subFrequency}
+            onChange={(e) => slideSubFrequency(parseInt(e.target.value))}
+          />
         </div>
         <ul>
           {/*
