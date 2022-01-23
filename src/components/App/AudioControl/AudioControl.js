@@ -23,10 +23,25 @@ const AudioControl = () => {
         <h1>Quarter note sound</h1>
         <div>
           <h1>Sound Type</h1>
-          <button onClick={() => setQuarterSoundType("Artificial")}>
+          <button
+            onClick={() => {
+              {
+                /* CALLBACK FUNCTION TO PREVENT UNNECESSARY RE-RENDER */
+              }
+              if (quarterSoundType !== "Artificial")
+                setQuarterSoundType("Artificial");
+            }}
+          >
             Artificial sound
           </button>
-          <button onClick={() => setQuarterSoundType("Drum")}>
+          <button
+            onClick={() => {
+              {
+                /* CALLBACK FUNCTION TO PREVENT UNNECESSARY RE-RENDER */
+              }
+              if (quarterSoundType !== "Drum") setQuarterSoundType("Drum");
+            }}
+          >
             Drum sounds
           </button>
         </div>
@@ -106,10 +121,26 @@ const AudioControl = () => {
         <h1>Sub note sound</h1>
         <div>
           <h1>Sound Type</h1>
-          <button onClick={() => setSubSoundType("Artificial")}>
+          <button
+            onClick={() => {
+              {
+                /* CALLBACK FUNCTION TO PREVENT UNNECESSARY RE-RENDER */
+              }
+              if (subSoundType !== "Artificial") setSubSoundType("Artificial");
+            }}
+          >
             Artificial sound
           </button>
-          <button onClick={() => setSubSoundType("Drum")}>Drum sounds</button>
+          <button
+            onClick={() => {
+              {
+                /* CALLBACK FUNCTION TO PREVENT UNNECESSARY RE-RENDER */
+              }
+              if (subSoundType !== "Drum") setSubSoundType("Drum");
+            }}
+          >
+            Drum sounds
+          </button>
         </div>
         {subSoundType === "Artificial" ? (
           <div>
