@@ -73,8 +73,8 @@ const MetronomeProvider = ({ children }) => {
     subDrumAudios,
     quarterFrequency,
     subFrequency,
-    isQuarterSoundArtificial,
-    isSubSoundArtificial,
+    quarterSoundType,
+    subSoundType,
   } = state;
 
   /*
