@@ -36,7 +36,6 @@ const reducer = (state, action) => {
             !state.quarterDrumAudios[action.payload.toggledAudio],
         },
       };
-
     case ACTIONS.TOGGLE_SUB_DRUM_AUDIOS:
       return {
         ...state,
@@ -49,9 +48,19 @@ const reducer = (state, action) => {
 
     case ACTIONS.SLIDE_QUARTER_FREQUENCY:
       return { ...state, quarterFrequency: action.payload.newFrequency };
-
     case ACTIONS.SLIDE_SUB_FREQUENCY:
       return { ...state, subFrequency: action.payload.newFrequency };
+
+    case ACTIONS.SWITCH_QUARTER_SOUND_TYPE:
+      return {
+        ...state,
+        isQuarterSoundArtificial: !state.isQuarterSoundArtificial,
+      };
+    case ACTIONS.SWITCH_SUB_SOUND_TYPE:
+      return {
+        ...state,
+        isSubSoundArtificial: !state.isSubSoundArtificial,
+      };
 
     default:
       return state;
