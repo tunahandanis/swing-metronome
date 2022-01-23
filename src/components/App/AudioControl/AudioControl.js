@@ -16,6 +16,14 @@ const AudioControl = () => {
     <section>
       <div>
         <h1>Quarter note sound</h1>
+        <div>
+          <h1>Sound Type</h1>
+          <button>Artificial sound</button>
+          <button>Drum sounds</button>
+        </div>
+        <div>
+          <input type="range" min={200} max={4000} step={10} />
+        </div>
         <ul>
           {/*
         ====================================
@@ -67,6 +75,14 @@ const AudioControl = () => {
 
       <div>
         <h1>Sub note sound</h1>
+        <div>
+          <h1>Sound Type</h1>
+          <button>Artificial sound</button>
+          <button>Drum sounds</button>
+        </div>
+        <div>
+          <input type="range" min={200} max={4000} step={10} />
+        </div>
         <ul>
           {/*
         ====================================
