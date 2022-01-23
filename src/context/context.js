@@ -95,7 +95,14 @@ const MetronomeProvider = ({ children }) => {
       clearInterval(intervalRef.current);
       intervalRef.current = setInterval(scheduler, lookahead);
     }
-  }, [subdivision, barLength, isStressing, swingPercentage]);
+  }, [
+    subdivision,
+    barLength,
+    isStressing,
+    swingPercentage,
+    quarterAudios,
+    subAudios,
+  ]);
 
   useEffect(() => {
     // Keeping tempo global for affecting inside functions
