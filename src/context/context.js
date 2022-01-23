@@ -78,6 +78,7 @@ const MetronomeProvider = ({ children }) => {
   const intervalRef = useRef();
   const audioContext = useRef(null);
 
+  // These are for avoiding metronome reset after tempo or swing changes for smoother transitions
   const tempoRef = useRef(tempo);
   const swingRef = useRef(swingPercentage);
 
@@ -322,7 +323,7 @@ const MetronomeProvider = ({ children }) => {
 
     if (stressing) {
       const osc = audioContext.current.createOscillator();
-      osc.frequency.value = 1500;
+      osc.frequency.value = 1200;
       osc.connect(audioContext.current.destination);
       osc.start(time);
       osc.stop(time + 0.025);
