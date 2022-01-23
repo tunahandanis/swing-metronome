@@ -56,6 +56,9 @@ const reducer = (state, action) => {
     case ACTIONS.SET_SUB_SOUND_TYPE:
       return { ...state, subSoundType: action.payload.newSoundType };
 
+    case ACTIONS.SLIDE_STRESS_FREQUENCY:
+      return { ...state, stressFrequency: action.payload.newStressFrequency };
+
     default:
       return state;
   }
