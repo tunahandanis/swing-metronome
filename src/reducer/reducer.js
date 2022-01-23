@@ -27,25 +27,28 @@ const reducer = (state, action) => {
     case ACTIONS.DECREASE_BAR_LENGTH:
       return { ...state, barLength: state.barLength - 1 };
 
-    case ACTIONS.TOGGLE_QUARTER_AUDIOS:
+    case ACTIONS.TOGGLE_QUARTER_DRUM_AUDIOS:
       return {
         ...state,
-        quarterAudios: {
-          ...state.quarterAudios,
+        quarterDrumAudios: {
+          ...state.quarterDrumAudios,
           [action.payload.toggledAudio]:
-            !state.quarterAudios[action.payload.toggledAudio],
+            !state.quarterDrumAudios[action.payload.toggledAudio],
         },
       };
 
-    case ACTIONS.TOGGLE_SUB_AUDIOS:
+    case ACTIONS.TOGGLE_SUB_DRUM_AUDIOS:
       return {
         ...state,
-        subAudios: {
-          ...state.subAudios,
+        subDrumAudios: {
+          ...state.subDrumAudios,
           [action.payload.toggledAudio]:
-            !state.subAudios[action.payload.toggledAudio],
+            !state.subDrumAudios[action.payload.toggledAudio],
         },
       };
+
+    default:
+      return state;
   }
 };
 

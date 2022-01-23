@@ -2,16 +2,13 @@ import React from "react";
 import { useMetronomeContext } from "../../../context/context";
 
 const AudioControl = () => {
-  const { quarterAudios, subAudios, toggleQuarterAudios, toggleSubAudios } =
-    useMetronomeContext();
+  const {
+    quarterDrumAudios,
+    subDrumAudios,
+    toggleQuarterDrumAudios,
+    toggleSubDrumAudios,
+  } = useMetronomeContext();
 
-  const drumAudios = [
-    "Snare",
-    "Hi-hat Open",
-    "Hi-hat Closed",
-    "Bass Drum",
-    "Sticks",
-  ];
   return (
     <section>
       <div>
@@ -32,41 +29,47 @@ const AudioControl = () => {
         ====================================
         */}
           <li
-            style={{ backgroundColor: quarterAudios.snare ? "green" : "red" }}
+            style={{
+              backgroundColor: quarterDrumAudios.snare ? "green" : "red",
+            }}
           >
-            <button onClick={() => toggleQuarterAudios("snare")}>Snare</button>
+            <button onClick={() => toggleQuarterDrumAudios("snare")}>
+              Snare
+            </button>
           </li>
           <li
             style={{
-              backgroundColor: quarterAudios.hihatClosed ? "green" : "red",
+              backgroundColor: quarterDrumAudios.hihatClosed ? "green" : "red",
             }}
           >
-            <button onClick={() => toggleQuarterAudios("hihatClosed")}>
+            <button onClick={() => toggleQuarterDrumAudios("hihatClosed")}>
               Hi-hat Closed
             </button>
           </li>
           <li
             style={{
-              backgroundColor: quarterAudios.hihatOpen ? "green" : "red",
+              backgroundColor: quarterDrumAudios.hihatOpen ? "green" : "red",
             }}
           >
-            <button onClick={() => toggleQuarterAudios("hihatOpen")}>
+            <button onClick={() => toggleQuarterDrumAudios("hihatOpen")}>
               Hi-hat Open
             </button>
           </li>
           <li
             style={{
-              backgroundColor: quarterAudios.bassDrum ? "green" : "red",
+              backgroundColor: quarterDrumAudios.bassDrum ? "green" : "red",
             }}
           >
-            <button onClick={() => toggleQuarterAudios("bassDrum")}>
+            <button onClick={() => toggleQuarterDrumAudios("bassDrum")}>
               Bass Drum
             </button>
           </li>
           <li
-            style={{ backgroundColor: quarterAudios.sticks ? "green" : "red" }}
+            style={{
+              backgroundColor: quarterDrumAudios.sticks ? "green" : "red",
+            }}
           >
-            <button onClick={() => toggleQuarterAudios("sticks")}>
+            <button onClick={() => toggleQuarterDrumAudios("sticks")}>
               Sticks
             </button>
           </li>
@@ -90,30 +93,44 @@ const AudioControl = () => {
         BECAUSE AUDIO FILE NAMES WON'T MATCH
         ====================================
         */}
-          <li style={{ backgroundColor: subAudios.snare ? "green" : "red" }}>
-            <button onClick={() => toggleSubAudios("snare")}>Snare</button>
+          <li
+            style={{ backgroundColor: subDrumAudios.snare ? "green" : "red" }}
+          >
+            <button onClick={() => toggleSubDrumAudios("snare")}>Snare</button>
           </li>
           <li
-            style={{ backgroundColor: subAudios.hihatClosed ? "green" : "red" }}
+            style={{
+              backgroundColor: subDrumAudios.hihatClosed ? "green" : "red",
+            }}
           >
-            <button onClick={() => toggleSubAudios("hihatClosed")}>
+            <button onClick={() => toggleSubDrumAudios("hihatClosed")}>
               Hi-hat Closed
             </button>
           </li>
           <li
-            style={{ backgroundColor: subAudios.hihatOpen ? "green" : "red" }}
+            style={{
+              backgroundColor: subDrumAudios.hihatOpen ? "green" : "red",
+            }}
           >
-            <button onClick={() => toggleSubAudios("hihatOpen")}>
+            <button onClick={() => toggleSubDrumAudios("hihatOpen")}>
               Hi-hat Open
             </button>
           </li>
-          <li style={{ backgroundColor: subAudios.bassDrum ? "green" : "red" }}>
-            <button onClick={() => toggleSubAudios("bassDrum")}>
+          <li
+            style={{
+              backgroundColor: subDrumAudios.bassDrum ? "green" : "red",
+            }}
+          >
+            <button onClick={() => toggleSubDrumAudios("bassDrum")}>
               Bass Drum
             </button>
           </li>
-          <li style={{ backgroundColor: subAudios.sticks ? "green" : "red" }}>
-            <button onClick={() => toggleSubAudios("sticks")}>Sticks</button>
+          <li
+            style={{ backgroundColor: subDrumAudios.sticks ? "green" : "red" }}
+          >
+            <button onClick={() => toggleSubDrumAudios("sticks")}>
+              Sticks
+            </button>
           </li>
         </ul>
       </div>

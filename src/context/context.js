@@ -33,14 +33,14 @@ const initialState = {
   subdivision: "Quarter",
   barLength: 2,
   isStressing: false,
-  quarterAudios: {
+  quarterDrumAudios: {
     snare: false,
     hihatOpen: false,
     hihatClosed: false,
     bassDrum: false,
     sticks: false,
   },
-  subAudios: {
+  subDrumAudios: {
     snare: false,
     hihatOpen: false,
     hihatClosed: false,
@@ -65,8 +65,8 @@ const MetronomeProvider = ({ children }) => {
     barLength,
     isStressing,
     swingPercentage,
-    quarterAudios,
-    subAudios,
+    quarterDrumAudios,
+    subDrumAudios,
   } = state;
 
   /*
@@ -103,8 +103,8 @@ const MetronomeProvider = ({ children }) => {
     barLength,
     isStressing,
     swingPercentage,
-    quarterAudios,
-    subAudios,
+    quarterDrumAudios,
+    subDrumAudios,
   ]);
 
   useEffect(() => {
@@ -192,16 +192,18 @@ const MetronomeProvider = ({ children }) => {
     dispatch({ type: ACTIONS.DECREASE_BAR_LENGTH });
   };
 
-  const toggleQuarterAudios = (e) => {
+  // CHANGE DRUM AUDIOS
+
+  const toggleQuarterDrumAudios = (e) => {
     dispatch({
-      type: ACTIONS.TOGGLE_QUARTER_AUDIOS,
+      type: ACTIONS.TOGGLE_QUARTER_DRUM_AUDIOS,
       payload: { toggledAudio: e },
     });
   };
 
-  const toggleSubAudios = (e) => {
+  const toggleSubDrumAudios = (e) => {
     dispatch({
-      type: ACTIONS.TOGGLE_SUB_AUDIOS,
+      type: ACTIONS.TOGGLE_SUB_DRUM_AUDIOS,
       payload: { toggledAudio: e },
     });
   };
@@ -341,8 +343,8 @@ const MetronomeProvider = ({ children }) => {
       source.stop(time + 0.35); */
 
       if (currentSubNote === 0) {
-        for (let audio in quarterAudios) {
-          if (quarterAudios[audio]) {
+        for (let audio in quarterDrumAudios) {
+          if (quarterDrumAudios[audio]) {
             const source = audioContext.current.createBufferSource();
 
             source.buffer = audioFilesRef.current[audio];
@@ -354,8 +356,8 @@ const MetronomeProvider = ({ children }) => {
           }
         }
       } else {
-        for (let audio in subAudios) {
-          if (subAudios[audio]) {
+        for (let audio in subDrumAudios) {
+          if (subDrumAudios[audio]) {
             const source = audioContext.current.createBufferSource();
 
             source.buffer = audioFilesRef.current[audio];
@@ -419,10 +421,10 @@ const MetronomeProvider = ({ children }) => {
         decreaseBarLength,
         isStressing,
         toggleStressing,
-        quarterAudios,
-        subAudios,
-        toggleQuarterAudios,
-        toggleSubAudios,
+        quarterDrumAudios,
+        subDrumAudios,
+        toggleQuarterDrumAudios,
+        toggleSubDrumAudios,
       }}
     >
       {children}
