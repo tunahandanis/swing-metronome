@@ -51,6 +51,7 @@ const initialState = {
   subFrequency: 600,
   quarterSoundType: "Drum",
   subSoundType: "Drum",
+  stressFrequency,
 };
 
 const MetronomeProvider = ({ children }) => {
@@ -75,6 +76,7 @@ const MetronomeProvider = ({ children }) => {
     subFrequency,
     quarterSoundType,
     subSoundType,
+    stressFrequency,
   } = state;
 
   /*
@@ -117,6 +119,7 @@ const MetronomeProvider = ({ children }) => {
     subDrumAudios,
     quarterSoundType,
     subSoundType,
+    stressFrequency,
   ]);
 
   useEffect(() => {
@@ -493,6 +496,7 @@ const MetronomeProvider = ({ children }) => {
         subSoundType,
         setQuarterSoundType,
         setSubSoundType,
+        stressFrequency,
       }}
     >
       {children}
