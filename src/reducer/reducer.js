@@ -51,16 +51,10 @@ const reducer = (state, action) => {
     case ACTIONS.SLIDE_SUB_FREQUENCY:
       return { ...state, subFrequency: action.payload.newFrequency };
 
-    case ACTIONS.SWITCH_QUARTER_SOUND_TYPE:
-      return {
-        ...state,
-        isQuarterSoundArtificial: !state.isQuarterSoundArtificial,
-      };
-    case ACTIONS.SWITCH_SUB_SOUND_TYPE:
-      return {
-        ...state,
-        isSubSoundArtificial: !state.isSubSoundArtificial,
-      };
+    case ACTIONS.SET_QUARTER_SOUND_TYPE:
+      return { ...state, quarterSoundType: action.payload.newSoundType };
+    case ACTIONS.SET_SUB_SOUND_TYPE:
+      return { ...state, subSoundType: action.payload.newSoundType };
 
     default:
       return state;
