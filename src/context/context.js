@@ -115,7 +115,6 @@ const MetronomeProvider = ({ children }) => {
     subdivision,
     barLength,
     isStressing,
-    swingPercentage,
     quarterDrumAudios,
     subDrumAudios,
     quarterSoundType,
