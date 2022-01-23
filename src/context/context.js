@@ -51,7 +51,7 @@ const initialState = {
   subFrequency: 600,
   quarterSoundType: "Drum",
   subSoundType: "Drum",
-  stressFrequency,
+  stressFrequency: 1500,
 };
 
 const MetronomeProvider = ({ children }) => {
