@@ -86,9 +86,11 @@ const MetronomeProvider = ({ children }) => {
   const intervalRef = useRef();
   const audioContext = useRef(null);
 
-  // These are for avoiding metronome reset after tempo or swing changes for smoother transitions
+  // These are for avoiding metronome reset after tempo, frequency or swing changes for smoother transitions
   const tempoRef = useRef(tempo);
   const swingRef = useRef(swingPercentage);
+  const quarterFrequencyRef = useRef(quarterFrequency);
+  const subFrequencyRef = useRef(subFrequency);
 
   // Audio file references
 
@@ -113,13 +115,17 @@ const MetronomeProvider = ({ children }) => {
     swingPercentage,
     quarterDrumAudios,
     subDrumAudios,
+    quarterSoundType,
+    subSoundType,
   ]);
 
   useEffect(() => {
     // Keeping tempo and swing percentage global for affecting inside functions
     tempoRef.current = tempo;
     swingRef.current = swingPercentage;
-  }, [tempo, swingPercentage]);
+    quarterFrequencyRef.current = quarterFrequency;
+    subFrequencyRef.current = subFrequency;
+  }, [tempo, swingPercentage, quarterFrequency, subFrequency]);
 
   /*
   ==========================
@@ -363,6 +369,7 @@ const MetronomeProvider = ({ children }) => {
     const stressing =
       isStressing && currentSubNote === 0 && currentQuarterNote === 0;
 
+    // CHECK IF THE NEXT NOTE WILL BE STRESSED
     if (stressing) {
       const osc = audioContext.current.createOscillator();
       osc.frequency.value = 1200;
@@ -370,42 +377,55 @@ const MetronomeProvider = ({ children }) => {
       osc.start(time);
       osc.stop(time + 0.025);
     } else {
-      /* const source = audioContext.current.createBufferSource();
-
-      source.buffer =
-        currentSubNote === 0
-          ? audioFilesRef.current.bassDrum
-          : audioFilesRef.current.sticks;
-
-      source.connect(audioContext.current.destination);
-
-      source.start(time);
-      source.stop(time + 0.35); */
-
+      // CHECK IF THE NEXT NOTE WILL BE SUB OR QUARTER
       if (currentSubNote === 0) {
-        for (let audio in quarterDrumAudios) {
-          if (quarterDrumAudios[audio]) {
-            const source = audioContext.current.createBufferSource();
+        // CHECK IF THE NEXT QUARTER NOTE WILL BE ARTIFICIAL OR DRUM SOUND
+        if (quarterSoundType === "Artificial") {
+          const osc = audioContext.current.createOscillator();
 
-            source.buffer = audioFilesRef.current[audio];
+          osc.frequency.value = quarterFrequencyRef.current;
 
-            source.connect(audioContext.current.destination);
+          osc.connect(audioContext.current.destination);
 
-            source.start(time);
-            source.stop(time + 0.35);
+          osc.start(time);
+          osc.stop(time + 0.025);
+        } else if (quarterSoundType === "Drum") {
+          for (let audio in quarterDrumAudios) {
+            if (quarterDrumAudios[audio]) {
+              const source = audioContext.current.createBufferSource();
+
+              source.buffer = audioFilesRef.current[audio];
+
+              source.connect(audioContext.current.destination);
+
+              source.start(time);
+              source.stop(time + 0.35);
+            }
           }
         }
       } else {
-        for (let audio in subDrumAudios) {
-          if (subDrumAudios[audio]) {
-            const source = audioContext.current.createBufferSource();
+        // CHECK IF THE NEXT SUB NOTE WILL BE ARTIFICIAL OR DRUM SOUND
+        if (subSoundType === "Artificial") {
+          const osc = audioContext.current.createOscillator();
 
-            source.buffer = audioFilesRef.current[audio];
+          osc.frequency.value = subFrequencyRef.current;
 
-            source.connect(audioContext.current.destination);
+          osc.connect(audioContext.current.destination);
 
-            source.start(time);
-            source.stop(time + 0.35);
+          osc.start(time);
+          osc.stop(time + 0.025);
+        } else if (subSoundType === "Drum") {
+          for (let audio in subDrumAudios) {
+            if (subDrumAudios[audio]) {
+              const source = audioContext.current.createBufferSource();
+
+              source.buffer = audioFilesRef.current[audio];
+
+              source.connect(audioContext.current.destination);
+
+              source.start(time);
+              source.stop(time + 0.35);
+            }
           }
         }
       }
