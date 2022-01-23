@@ -257,6 +257,15 @@ const MetronomeProvider = ({ children }) => {
     });
   };
 
+  // SLIDE STRESS FREQUENCY
+
+  const slideStressFrequency = (e) => {
+    dispatch({
+      type: ACTIONS.SLIDE_STRESS_FREQUENCY,
+      payload: { newStressFrequency: e },
+    });
+  };
+
   /*
   ===========
   FETCH AUDIO
@@ -497,6 +506,7 @@ const MetronomeProvider = ({ children }) => {
         setQuarterSoundType,
         setSubSoundType,
         stressFrequency,
+        slideStressFrequency,
       }}
     >
       {children}
