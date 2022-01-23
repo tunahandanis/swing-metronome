@@ -77,7 +77,9 @@ const MetronomeProvider = ({ children }) => {
 
   const intervalRef = useRef();
   const audioContext = useRef(null);
+
   const tempoRef = useRef(tempo);
+  const swingRef = useRef(swingPercentage);
 
   // Audio file references
 
@@ -105,9 +107,10 @@ const MetronomeProvider = ({ children }) => {
   ]);
 
   useEffect(() => {
-    // Keeping tempo global for affecting inside functions
+    // Keeping tempo and swing percentage global for affecting inside functions
     tempoRef.current = tempo;
-  }, [tempo]);
+    swingRef.current = swingPercentage;
+  }, [tempo, swingPercentage]);
 
   /*
   ==========================
@@ -371,9 +374,9 @@ const MetronomeProvider = ({ children }) => {
     timeBetweenBeats = 60.0 / tempoRef.current / currentSubLength(subdivision);
 
     if (currentSwingNote === 0) {
-      nextNoteTime += timeBetweenBeats * ((swingPercentage * 2) / 100);
+      nextNoteTime += timeBetweenBeats * ((swingRef.current * 2) / 100);
     } else if ((currentSwingNote = 1)) {
-      nextNoteTime += timeBetweenBeats * (((100 - swingPercentage) * 2) / 100);
+      nextNoteTime += timeBetweenBeats * (((100 - swingRef.current) * 2) / 100);
     }
 
     console.log(nextNoteTime);
