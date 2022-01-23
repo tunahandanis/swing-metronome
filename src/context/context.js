@@ -212,6 +212,22 @@ const MetronomeProvider = ({ children }) => {
     });
   };
 
+  // CHANGE ARTIFICIAL SOUND FREQUENCIES
+
+  const slideQuarterFrequency = (e) => {
+    dispatch({
+      type: ACTIONS.SLIDE_QUARTER_FREQUENCY,
+      payload: { newFrequency: e },
+    });
+  };
+
+  const slideSubFrequency = (e) => {
+    dispatch({
+      type: ACTIONS.SLIDE_SUB_FREQUENCY,
+      payload: { newFrequency: e },
+    });
+  };
+
   /*
   ===========
   FETCH AUDIO
