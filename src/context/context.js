@@ -34,7 +34,7 @@ const initialState = {
   barLength: 2,
   isStressing: false,
   quarterDrumAudios: {
-    snare: false,
+    snare: true,
     hihatOpen: false,
     hihatClosed: false,
     bassDrum: false,
@@ -45,7 +45,7 @@ const initialState = {
     hihatOpen: false,
     hihatClosed: false,
     bassDrum: false,
-    sticks: false,
+    sticks: true,
   },
   quarterFrequency: 800,
   subFrequency: 600,
@@ -213,17 +213,35 @@ const MetronomeProvider = ({ children }) => {
   // CHANGE DRUM AUDIOS
 
   const toggleQuarterDrumAudios = (e) => {
-    dispatch({
-      type: ACTIONS.TOGGLE_QUARTER_DRUM_AUDIOS,
-      payload: { toggledAudio: e },
-    });
+    // IF STATEMENTS PREVENTS ALL QUARTER DRUM SOUNDS BEING FALSE
+    if (
+      Object.values(quarterDrumAudios).reduce(
+        (prev, curr) => (curr ? prev + 1 : prev),
+        0
+      ) > 1 ||
+      !quarterDrumAudios[e]
+    ) {
+      dispatch({
+        type: ACTIONS.TOGGLE_QUARTER_DRUM_AUDIOS,
+        payload: { toggledAudio: e },
+      });
+    }
   };
 
   const toggleSubDrumAudios = (e) => {
-    dispatch({
-      type: ACTIONS.TOGGLE_SUB_DRUM_AUDIOS,
-      payload: { toggledAudio: e },
-    });
+    // IF STATEMENTS PREVENTS ALL SUB DRUM SOUNDS BEING FALSE
+    if (
+      Object.values(subDrumAudios).reduce(
+        (prev, curr) => (curr ? prev + 1 : prev),
+        0
+      ) > 1 ||
+      !subDrumAudios[e]
+    ) {
+      dispatch({
+        type: ACTIONS.TOGGLE_SUB_DRUM_AUDIOS,
+        payload: { toggledAudio: e },
+      });
+    }
   };
 
   // CHANGE ARTIFICIAL SOUND FREQUENCIES
