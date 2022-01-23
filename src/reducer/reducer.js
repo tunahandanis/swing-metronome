@@ -47,6 +47,12 @@ const reducer = (state, action) => {
         },
       };
 
+    case ACTIONS.SLIDE_QUARTER_FREQUENCY:
+      return { ...state, quarterFrequency: action.payload.newFrequency };
+
+    case ACTIONS.SLIDE_SUB_FREQUENCY:
+      return { ...state, subFrequency: action.payload.newFrequency };
+
     default:
       return state;
   }
