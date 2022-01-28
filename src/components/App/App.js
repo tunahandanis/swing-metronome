@@ -1,4 +1,3 @@
-import "../../assets/styles/App.css";
 import MetronomeInterface from "./MetronomeInterface/MetronomeInterface";
 import NotationControl from "./NotationControl/NotationControl";
 import AudioControl from "./AudioControl/AudioControl";
