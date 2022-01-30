@@ -6,14 +6,12 @@ import { MetronomeProvider } from "../../context/context";
 
 function App() {
   return (
-    <main>
-      <MetronomeProvider>
-        <Header />
-        <MetronomeInterface />
-        <NotationControl />
-        <AudioControl />
-      </MetronomeProvider>
-    </main>
+    <MetronomeProvider>
+      <Header />
+      <MetronomeInterface />
+      <NotationControl />
+      <AudioControl />
+    </MetronomeProvider>
   );
 }
 
