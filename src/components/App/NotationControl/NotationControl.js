@@ -23,30 +23,54 @@ const NotationControl = () => {
   };
 
   return (
-    <section>
-      <ul>
-        <li>
-          <button onClick={() => changeSubdivision("Quarter")}>Quarter</button>
+    <section className="notation">
+      <ul className="notation__list">
+        <li className="notation__list-item">
+          <button
+            onClick={() => changeSubdivision("Quarter")}
+            className="btn notation-btn"
+          >
+            Quarter
+          </button>
         </li>
-        <li>
-          <button onClick={() => changeSubdivision("Eighth")}>Eighth</button>
+        <li className="notation__list-item">
+          <button
+            onClick={() => changeSubdivision("Eighth")}
+            className="btn notation-btn"
+          >
+            Eighth
+          </button>
         </li>
-        <li>
-          <button onClick={() => changeSubdivision("Sixteenth")}>
+        <li className="notation__list-item">
+          <button
+            onClick={() => changeSubdivision("Sixteenth")}
+            className="btn notation-btn"
+          >
             Sixteenth
           </button>
         </li>
-        <li>
-          <button onClick={() => changeSubdivision("Triplet")}>Triplet</button>
+        <li className="notation__list-item">
+          <button
+            onClick={() => changeSubdivision("Triplet")}
+            className="btn notation-btn"
+          >
+            Triplet
+          </button>
         </li>
       </ul>
 
-      <div>
-        <button onClick={toggleStressing}>Stress</button>
-        <div>
-          <button onClick={beatDown}>-</button>
-          <h3>{barLength}</h3>
-          <button onClick={beatUp}>+</button>
+      <div className="notation__stress">
+        <button onClick={toggleStressing} className="btn toggle-stress-btn">
+          Stress
+        </button>
+        <div className="notation__stress-control">
+          <button onClick={beatDown} className="btn up-btn">
+            -
+          </button>
+          <h3 className="notation__stress-text">{barLength}</h3>
+          <button onClick={beatUp} className="btn down-btn">
+            +
+          </button>
         </div>
       </div>
     </section>

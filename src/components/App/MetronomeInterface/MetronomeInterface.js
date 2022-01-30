@@ -28,31 +28,39 @@ const MetronomeInterface = () => {
   };
 
   return (
-    <section>
-      <h1>
-        <span>{tempo}</span>BPM
-      </h1>
-      <div>
-        <button onClick={stepDown}>&ndash;</button>
+    <section className="interface">
+      <h1 className="interface__tempo-text">{tempo}BPM</h1>
+      <div className="interface__tempo-control">
+        <button onClick={stepDown} className="btn down-btn">
+          &ndash;
+        </button>
         <input
+          className="slider tempo-slider"
           ref={rangeRef}
           type="range"
           min={30}
           max={250}
           onChange={(e) => slideTempo(parseInt(e.target.value))}
         />
-        <button onClick={stepUp}>+</button>
+        <button onClick={stepUp} className="btn up-btn">
+          +
+        </button>
       </div>
-      <div>
-        <h1>Swing Percentage: {swingPercentage}%</h1>
+      <div className="interface__swing">
+        <h1 className="interface__swing-text">
+          Swing Percentage: {swingPercentage}%
+        </h1>
         <input
+          className="slider swing-slider"
           type="range"
           min={0}
           max={100}
           onChange={(e) => slideSwing(parseInt(e.target.value))}
         />
       </div>
-      <button onClick={startStop}>Start/Stop</button>
+      <button onClick={startStop} className="btn start-stop-btn">
+        Start/Stop
+      </button>
     </section>
   );
 };
