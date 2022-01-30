@@ -52,6 +52,7 @@ const initialState = {
   quarterSoundType: "Drum",
   subSoundType: "Drum",
   stressFrequency: 1500,
+  swingActive: false,
 };
 
 const MetronomeProvider = ({ children }) => {
@@ -77,6 +78,7 @@ const MetronomeProvider = ({ children }) => {
     quarterSoundType,
     subSoundType,
     stressFrequency,
+    swingActive,
   } = state;
 
   /*
@@ -119,6 +121,7 @@ const MetronomeProvider = ({ children }) => {
     subDrumAudios,
     quarterSoundType,
     subSoundType,
+    swingActive,
   ]);
 
   useEffect(() => {
@@ -284,6 +287,14 @@ const MetronomeProvider = ({ children }) => {
     });
   };
 
+  // TOGGLE SWING
+
+  const toggleSwing = () => {
+    dispatch({
+      type: ACTIONS.TOGGLE_SWING,
+    });
+  };
+
   /*
   ===========
   FETCH AUDIO
@@ -435,17 +446,18 @@ const MetronomeProvider = ({ children }) => {
   };
 
   const nextNote = () => {
-    // Adjusting time between two beats according to tempo and sub-division
+    // Adjusting time between two beats according to tempo, swing and sub-division
     timeBetweenBeats = 60.0 / tempoRef.current / currentSubLength(subdivision);
 
-    if (currentSwingNote === 0) {
+    if (currentSwingNote === 0 && swingActive) {
       nextNoteTime += timeBetweenBeats * ((swingRef.current * 2) / 100);
-    } else if ((currentSwingNote = 1)) {
+    } else if (currentSwingNote === 1 && swingActive) {
       nextNoteTime += timeBetweenBeats * (((100 - swingRef.current) * 2) / 100);
+    } else {
+      nextNoteTime += timeBetweenBeats;
     }
 
     console.log(nextNoteTime);
-    // Adding that to next note's time
 
     // Counting for sub-notes and stressing
     currentQuarterNote++;
@@ -497,6 +509,8 @@ const MetronomeProvider = ({ children }) => {
         setSubSoundType,
         stressFrequency,
         slideStressFrequency,
+        swingActive,
+        toggleSwing,
       }}
     >
       {children}

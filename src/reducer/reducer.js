@@ -59,6 +59,9 @@ const reducer = (state, action) => {
     case ACTIONS.SLIDE_STRESS_FREQUENCY:
       return { ...state, stressFrequency: action.payload.newStressFrequency };
 
+    case ACTIONS.TOGGLE_SWING:
+      return { ...state, swingActive: !state.swingActive };
+
     default:
       return state;
   }

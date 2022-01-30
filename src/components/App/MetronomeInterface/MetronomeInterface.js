@@ -11,6 +11,8 @@ const MetronomeInterface = () => {
     slideSwing,
     isRunning,
     startStop,
+    swingActive,
+    toggleSwing,
   } = useMetronomeContext();
 
   // Range ref hook
@@ -49,22 +51,28 @@ const MetronomeInterface = () => {
         </div>
 
         <button onClick={startStop} className="btn start-stop-btn">
-          Start/Stop
+          {isRunning ? "Stop" : "Start"}
+        </button>
+
+        <button onClick={toggleSwing} className="btn toggle-swing-btn">
+          {swingActive ? "Deactivate Swing" : "Activate Swing"}
         </button>
       </div>
 
-      <div className="interface__swing">
-        <h1 className="interface__swing-text">
-          Swing Percentage: {swingPercentage}%
-        </h1>
-        <input
-          className="slider swing-slider"
-          type="range"
-          min={0}
-          max={100}
-          onChange={(e) => slideSwing(parseInt(e.target.value))}
-        />
-      </div>
+      {swingActive && (
+        <div className="interface__swing">
+          <h1 className="interface__swing-text">
+            Swing Percentage: {swingPercentage}%
+          </h1>
+          <input
+            className="slider swing-slider"
+            type="range"
+            min={0}
+            max={100}
+            onChange={(e) => slideSwing(parseInt(e.target.value))}
+          />
+        </div>
+      )}
     </section>
   );
 };
