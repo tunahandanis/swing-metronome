@@ -54,9 +54,16 @@ const MetronomeInterface = () => {
           {isRunning ? "Stop" : "Start"}
         </button>
 
-        <button onClick={toggleSwing} className="btn toggle-swing-btn">
-          {swingActive ? "Deactivate Swing" : "Activate Swing"}
-        </button>
+        {/* DIVS FOR TOGGLE SWING BUTTON STYLE */}
+
+        <div
+          onClick={toggleSwing}
+          className={`toggle-swing ${swingActive && "toggle-swing-on"}`}
+        >
+          <div className="toggle-swing-text-off">OFF</div>
+          <div className="toggle-swing-btn" />
+          <div className="toggle-swing-text-on">ON</div>
+        </div>
       </div>
 
       {swingActive && (

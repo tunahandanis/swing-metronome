@@ -30,3 +30,99 @@
   font-size: 1.7rem;
   margin: 1em 0;
 }
+
+/* BUTTONS */
+
+.start-stop-btn {
+  padding: 0.3em 0.7em;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  border-radius: 5%;
+  margin: 1.5em 0;
+}
+
+/* Swing toggle */
+
+.toggle-swing {
+  position: relative;
+  width: 4.7em;
+  height: 2.5em;
+}
+
+.toggle-swing {
+  border: 2px solid #444249;
+  border-radius: 20px;
+  -webkit-transition: border-color 0.6s ease-out;
+  transition: border-color 0.6s ease-out;
+}
+
+.toggle-swing-on {
+  border-color: rgba(137, 194, 217, 0.4);
+  -webkit-transition: all 0.5s 0.15s ease-out;
+  transition: all 0.5s 0.15s ease-out;
+}
+
+.toggle-swing-btn {
+  position: absolute;
+  top: 4px;
+  width: 1.8em;
+  bottom: 4px;
+  right: 39px;
+  background-color: #444249;
+  border-radius: 19px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s 0.1s, width 0.1s, top 0.1s, bottom 0.1s;
+  transition: all 0.3s 0.1s, width 0.1s, top 0.1s, bottom 0.1s;
+}
+
+.toggle-swing-on .toggle-swing-btn {
+  top: 3px;
+  width: 4em;
+  bottom: 3px;
+  right: 3px;
+  border-radius: 23px;
+  background-color: #89c2da;
+  box-shadow: 0 0 16px #4b7a8d;
+  -webkit-transition: all 0.2s 0.1s, right 0.1s;
+  transition: all 0.2s 0.1s, right 0.1s;
+}
+
+.toggle-swing-text-on {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  color: rgba(0, 0, 0, 0);
+}
+
+.toggle-swing-on .toggle-swing-text-on {
+  color: #3b6a7d;
+  -webkit-transition: color 0.3s 0.15s;
+  transition: color 0.3s 0.15s;
+}
+
+.toggle-swing-text-off {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+
+  cursor: pointer;
+
+  color: #444249;
+}
+
+.toggle-swing-on .toggle-text-off {
+  color: rgba(0, 0, 0, 0);
+}
