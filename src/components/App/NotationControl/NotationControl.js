@@ -65,7 +65,7 @@ const NotationControl = () => {
         </button>
         <div className="notation__stress-control">
           <button onClick={beatDown} className="btn up-btn">
-            -
+            &ndash;
           </button>
           <h3 className="notation__stress-text">{barLength}</h3>
           <button onClick={beatUp} className="btn down-btn">

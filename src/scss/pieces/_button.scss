@@ -1,0 +1,17 @@
+.btn {
+  color: white;
+  background: transparent;
+  cursor: pointer;
+  border: 1px solid white;
+}
+
+.up-btn,
+.down-btn {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  font-size: 2.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
