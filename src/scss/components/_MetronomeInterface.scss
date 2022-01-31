@@ -1,0 +1,32 @@
+.interface {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border: 3px solid white;
+  padding: 5em 0;
+}
+
+.interface__tempo {
+  border: 3px solid red;
+  width: 80%;
+  padding: 8em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.interface__tempo-text {
+  font-size: 2.5rem;
+  margin-bottom: 0.7em;
+}
+
+.interface__swing {
+  text-align: center;
+}
+
+.interface__swing-text {
+  font-size: 1.7rem;
+  margin: 1em 0;
+}
