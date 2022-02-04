@@ -80,6 +80,12 @@ const MetronomeInterface = () => {
           />
         </div>
       )}
+
+      <div className="divider-container">
+        <div className="divider-lines">
+          <div className="divider-diamond"></div>
+        </div>
+      </div>
     </section>
   );
 };
