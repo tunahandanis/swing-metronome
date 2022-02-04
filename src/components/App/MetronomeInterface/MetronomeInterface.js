@@ -31,7 +31,7 @@ const MetronomeInterface = () => {
 
   return (
     <section className="interface">
-      <div className="interface__tempo">
+      <div className="interface__tempo container">
         <h1 className="interface__tempo-text">{tempo}BPM</h1>
         <div className="interface__tempo-control">
           <button onClick={stepDown} className="btn down-btn">
@@ -67,7 +67,7 @@ const MetronomeInterface = () => {
       </div>
 
       {swingActive && (
-        <div className="interface__swing">
+        <div className="interface__swing container">
           <h1 className="interface__swing-text">
             Swing Percentage: {swingPercentage}%
           </h1>
