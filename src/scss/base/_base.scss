@@ -1,7 +1,16 @@
 body {
   min-height: 100vh;
-  background: url("../../assets/images/body-background.png");
-  color: white;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url("../../assets/images/Jazz.jpg");
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
 }
 
 #root {
