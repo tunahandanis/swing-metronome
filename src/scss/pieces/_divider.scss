@@ -6,27 +6,27 @@
   height: 3em;
   position: relative;
   display: flex;
-}
 
-.divider-lines::after,
-.divider-lines::before {
-  content: "";
-  position: absolute;
-  margin: auto;
-  height: 1.5px;
-  width: 43%;
-  top: 50%;
-  border-radius: 10px;
-}
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    margin: auto;
+    height: 1.5px;
+    width: 43%;
+    top: 50%;
+    border-radius: 10px;
+  }
 
-.divider-lines::after {
-  left: 0;
-  background: linear-gradient(to right, rgb(87, 87, 87), #fff);
-}
+  &::after {
+    left: 0;
+    background: linear-gradient(to right, rgb(87, 87, 87), #fff);
+  }
 
-.divider-lines::before {
-  right: 0;
-  background: linear-gradient(to left, rgb(87, 87, 87), #fff);
+  &::before {
+    right: 0;
+    background: linear-gradient(to left, rgb(87, 87, 87), #fff);
+  }
 }
 
 .divider-diamond {

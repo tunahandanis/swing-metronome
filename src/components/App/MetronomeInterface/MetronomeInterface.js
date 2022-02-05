@@ -54,7 +54,7 @@ const MetronomeInterface = () => {
 
         <button onClick={startStop} className="btn start-stop-btn">
           {isRunning ? (
-            <PauseIcon sx={{ fontSize: "3.5rem" }} />
+            <PauseIcon sx={{ fontSize: "3.2rem" }} />
           ) : (
             <PlayArrowIcon sx={{ fontSize: "3.5rem" }} />
           )}
