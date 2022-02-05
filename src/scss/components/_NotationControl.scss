@@ -1,0 +1,33 @@
+@use "../abstracts" as *;
+
+.notation__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  margin-top: -1em;
+
+  &-item {
+    flex: 0 0 40%;
+    margin: 2em 0;
+    text-align: center;
+  }
+}
+
+.notation-btn {
+  height: 4em;
+  width: 6em;
+  letter-spacing: 1px;
+  border: none;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+
+  &--selected {
+    box-shadow: inset 0.1rem 0.1rem 0.25rem $primary-color,
+      inset -0.1rem -0.1rem 0.25rem $primary-color;
+    border-radius: 5px;
+    color: $primary-color;
+    transition: all 0.3s ease;
+  }
+}

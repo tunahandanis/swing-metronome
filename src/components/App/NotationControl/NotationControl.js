@@ -28,7 +28,9 @@ const NotationControl = () => {
         <li className="notation__list-item">
           <button
             onClick={() => changeSubdivision("Quarter")}
-            className="btn notation-btn"
+            className={`btn notation-btn ${
+              subdivision === "Quarter" && "notation-btn--selected"
+            }`}
           >
             Quarter
           </button>
@@ -36,7 +38,9 @@ const NotationControl = () => {
         <li className="notation__list-item">
           <button
             onClick={() => changeSubdivision("Eighth")}
-            className="btn notation-btn"
+            className={`btn notation-btn ${
+              subdivision === "Eighth" && "notation-btn--selected"
+            }`}
           >
             Eighth
           </button>
@@ -44,7 +48,9 @@ const NotationControl = () => {
         <li className="notation__list-item">
           <button
             onClick={() => changeSubdivision("Sixteenth")}
-            className="btn notation-btn"
+            className={`btn notation-btn ${
+              subdivision === "Sixteenth" && "notation-btn--selected"
+            }`}
           >
             Sixteenth
           </button>
@@ -52,7 +58,9 @@ const NotationControl = () => {
         <li className="notation__list-item">
           <button
             onClick={() => changeSubdivision("Triplet")}
-            className="btn notation-btn"
+            className={`btn notation-btn ${
+              subdivision === "Triplet" && "notation-btn--selected"
+            }`}
           >
             Triplet
           </button>
