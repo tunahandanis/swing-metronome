@@ -1,5 +1,7 @@
 import React, { useRef } from "react";
 import { useMetronomeContext } from "../../../context/context";
+import PauseIcon from "@mui/icons-material/Pause";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 const MetronomeInterface = () => {
   const {
@@ -51,7 +53,11 @@ const MetronomeInterface = () => {
         </div>
 
         <button onClick={startStop} className="btn start-stop-btn">
-          {isRunning ? "Stop" : "Start"}
+          {isRunning ? (
+            <PauseIcon sx={{ fontSize: "3.5rem" }} />
+          ) : (
+            <PlayArrowIcon sx={{ fontSize: "3.5rem" }} />
+          )}
         </button>
 
         {/* DIVS FOR TOGGLE SWING BUTTON STYLE */}
