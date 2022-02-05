@@ -34,7 +34,9 @@ const MetronomeInterface = () => {
   return (
     <section className="interface">
       <div className="interface__tempo container">
-        <h1 className="interface__tempo-text">{tempo}BPM</h1>
+        <h1 className="interface__tempo-text">
+          <span className="interface__tempo-text-span">{tempo}</span>BPM
+        </h1>
         <div className="interface__tempo-control">
           <button onClick={stepDown} className="btn down-btn">
             &ndash;
@@ -63,20 +65,26 @@ const MetronomeInterface = () => {
 
         {/* DIVS FOR TOGGLE SWING BUTTON STYLE */}
 
-        <div
-          onClick={toggleSwing}
-          className={`toggle-swing ${swingActive && "toggle-swing-on"}`}
-        >
-          <div className="toggle-swing-text-off">OFF</div>
-          <div className="toggle-swing-btn" />
-          <div className="toggle-swing-text-on">ON</div>
+        <div className="interface__swing-toggle">
+          <h2 className="interface__swing-toggle-title">Swing</h2>
+          <div
+            onClick={toggleSwing}
+            className={`toggle-swing ${swingActive && "toggle-swing-on"}`}
+          >
+            <div className="toggle-swing-text-off">OFF</div>
+            <div className="toggle-swing-btn" />
+            <div className="toggle-swing-text-on">ON</div>
+          </div>
         </div>
       </div>
 
       {swingActive && (
         <div className="interface__swing container">
           <h1 className="interface__swing-text">
-            Swing Percentage: {swingPercentage}%
+            Swing Percentage:{" "}
+            <span className="interface__swing-text-span">
+              {swingPercentage}%
+            </span>
           </h1>
           <input
             className="slider swing-slider"

@@ -1,3 +1,7 @@
+@use "../abstracts" as *;
+
+/* GENERAL */
+
 .interface {
   display: flex;
   flex-direction: column;
@@ -5,6 +9,8 @@
   width: 100%;
   padding: 5em 0;
 }
+
+/* TEMPO */
 
 .interface__tempo-control {
   display: flex;
@@ -15,18 +21,16 @@
 .interface__tempo-text {
   font-size: 2.5rem;
   margin-bottom: 0.7em;
-}
+  font-weight: 500;
 
-.interface__swing {
-  margin: 3em 0;
-
-  &-text {
-    font-size: 1.7rem;
-    margin: 1em 0;
+  &-span {
+    color: $primary-color;
+    font-size: 4rem;
+    padding-right: 0.05em;
   }
 }
 
-/* BUTTONS */
+/* START-STOP BTN */
 
 .start-stop-btn {
   margin: 3em 0;
@@ -42,7 +46,7 @@
   }
 }
 
-/* Swing toggle */
+/* SWING TOGGLE */
 
 .toggle-swing {
   position: relative;
@@ -108,7 +112,7 @@
     bottom: 3px;
     right: 3px;
     border-radius: 23px;
-    background-color: #89c2da;
+    background-color: $primary-color;
     box-shadow: 0 0 16px #4b7a8d;
     -webkit-transition: all 0.2s 0.1s, right 0.1s;
     transition: all 0.2s 0.1s, right 0.1s;
@@ -123,4 +127,40 @@
   .toggle-swing-text-off {
     color: rgba(0, 0, 0, 0);
   }
+}
+
+/* SWING PART */
+
+.interface__swing {
+  margin-top: -4em;
+  white-space: nowrap;
+
+  &-text {
+    font-size: 1.5rem;
+    margin: 1em 0;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    &-span {
+      font-size: 2.5rem;
+      color: $primary-color;
+      padding-left: 0.05em;
+    }
+  }
+}
+
+.interface__swing-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.interface__swing-toggle-title {
+  letter-spacing: 2px;
+  margin: 0.7em;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1.7rem;
 }
