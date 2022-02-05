@@ -6,6 +6,12 @@
   padding: 5em 0;
 }
 
+.interface__tempo-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .interface__tempo-text {
   font-size: 2.5rem;
   margin-bottom: 0.7em;

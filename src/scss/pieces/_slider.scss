@@ -1,0 +1,31 @@
+@use "../abstracts";
+
+.slider {
+  width: 17em;
+  background: abstracts.$slider-color;
+  margin: 1em;
+
+  appearance: none;
+  &:focus {
+    outline: none;
+  }
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+  &::-moz-range-thumb {
+    border: none;
+  }
+
+  &::-webkit-slider-runnable-track {
+    @include abstracts.track-style;
+  }
+  &::-webkit-slider-thumb {
+    @include abstracts.thumb-style;
+  }
+  &::-moz-range-track {
+    @include abstracts.track-style;
+  }
+  &::-moz-range-thumb {
+    @include abstracts.thumb-style;
+  }
+}

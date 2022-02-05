@@ -45,6 +45,7 @@ const MetronomeInterface = () => {
             type="range"
             min={30}
             max={250}
+            value={tempo}
             onChange={(e) => slideTempo(parseInt(e.target.value))}
           />
           <button onClick={stepUp} className="btn up-btn">
