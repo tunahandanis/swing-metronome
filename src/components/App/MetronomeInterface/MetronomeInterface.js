@@ -69,11 +69,11 @@ const MetronomeInterface = () => {
           <h2 className="interface__swing-toggle-title">Swing</h2>
           <div
             onClick={toggleSwing}
-            className={`toggle-swing ${swingActive && "toggle-swing-on"}`}
+            className={`toggle ${swingActive && "toggle--on"}`}
           >
-            <div className="toggle-swing-text-off">OFF</div>
-            <div className="toggle-swing-btn" />
-            <div className="toggle-swing-text-on">ON</div>
+            <div className="toggle--text-off">OFF</div>
+            <div className="toggle-btn" />
+            <div className="toggle--text-on">ON</div>
           </div>
         </div>
       </div>
