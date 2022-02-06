@@ -30,8 +30,8 @@ const NotationControl = () => {
         <li className="notation__list-item">
           <button
             onClick={() => changeSubdivision("Quarter")}
-            className={`btn notation-btn ${
-              subdivision === "Quarter" && "notation-btn--selected"
+            className={`btn radio-btn ${
+              subdivision === "Quarter" && "radio-btn--selected"
             }`}
           >
             Quarter
@@ -40,8 +40,8 @@ const NotationControl = () => {
         <li className="notation__list-item">
           <button
             onClick={() => changeSubdivision("Eighth")}
-            className={`btn notation-btn ${
-              subdivision === "Eighth" && "notation-btn--selected"
+            className={`btn radio-btn ${
+              subdivision === "Eighth" && "radio-btn--selected"
             }`}
           >
             Eighth
@@ -50,8 +50,8 @@ const NotationControl = () => {
         <li className="notation__list-item">
           <button
             onClick={() => changeSubdivision("Sixteenth")}
-            className={`btn notation-btn ${
-              subdivision === "Sixteenth" && "notation-btn--selected"
+            className={`btn radio-btn ${
+              subdivision === "Sixteenth" && "radio-btn--selected"
             }`}
           >
             Sixteenth
@@ -60,8 +60,8 @@ const NotationControl = () => {
         <li className="notation__list-item">
           <button
             onClick={() => changeSubdivision("Triplet")}
-            className={`btn notation-btn ${
-              subdivision === "Triplet" && "notation-btn--selected"
+            className={`btn radio-btn ${
+              subdivision === "Triplet" && "radio-btn--selected"
             }`}
           >
             Triplet

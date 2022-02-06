@@ -1,0 +1,59 @@
+@use "../abstracts" as *;
+
+.audio__control {
+  text-align: center;
+  padding: 3em 1.5em;
+
+  &-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1.5em;
+  }
+
+  &-switch {
+    .radio-btn {
+      margin: 0 0.5em 2.5em;
+    }
+  }
+
+  margin: 4em 0;
+}
+
+.audio__artificial {
+  &-frequency-text {
+    font-weight: 500;
+    letter-spacing: 1px;
+
+    span {
+      color: $primary-color;
+      font-size: 1.8rem;
+    }
+    margin-bottom: 0.8em;
+  }
+}
+
+.audio__drum {
+  &-item {
+    padding: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 1em;
+
+    .drum-btn {
+      border: none;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+  }
+
+  .audio__drum-item--selected {
+    border: 1px solid $primary-color;
+    box-shadow: inset 0px 0px 10px $primary-color;
+
+    button {
+      color: $primary-color;
+    }
+  }
+}

@@ -20,11 +20,12 @@ const AudioControl = () => {
   return (
     <section className="audio">
       <div className="audio__control">
-        <h1 className="audio__control-title">Quarter note sound</h1>
+        <h1 className="audio__control-title">Quarter Note</h1>
         <div className="audio__control-switch">
-          <h1 className="audio__control-switch-title">Sound Type</h1>
           <button
-            className="btn audio-switch-btn"
+            className={`btn radio-btn ${
+              quarterSoundType === "Artificial" && "radio-btn--selected"
+            }`}
             onClick={() => {
               {
                 /* CALLBACK FUNCTION TO PREVENT UNNECESSARY RE-RENDER */
@@ -33,10 +34,12 @@ const AudioControl = () => {
                 setQuarterSoundType("Artificial");
             }}
           >
-            Artificial sound
+            Artificial
           </button>
           <button
-            className="btn audio-switch-btn"
+            className={`btn radio-btn ${
+              quarterSoundType === "Drum" && "radio-btn--selected"
+            }`}
             onClick={() => {
               {
                 /* CALLBACK FUNCTION TO PREVENT UNNECESSARY RE-RENDER */
@@ -44,13 +47,13 @@ const AudioControl = () => {
               if (quarterSoundType !== "Drum") setQuarterSoundType("Drum");
             }}
           >
-            Drum sounds
+            Drum
           </button>
         </div>
         {quarterSoundType === "Artificial" ? (
           <div className="audio__artificial">
             <h2 className="audio__artificial-frequency-text">
-              {quarterFrequency}
+              Frequency: <span>{quarterFrequency}</span>
             </h2>
 
             <input
@@ -72,82 +75,56 @@ const AudioControl = () => {
         ====================================
         */}
             <li
-              className="audio__drum-item"
-              style={{
-                backgroundColor: quarterDrumAudios.snare ? "green" : "red",
-              }}
+              onClick={() => toggleQuarterDrumAudios("snare")}
+              className={`audio__drum-item ${
+                quarterDrumAudios.snare && "audio__drum-item--selected"
+              }`}
             >
-              <button
-                onClick={() => toggleQuarterDrumAudios("snare")}
-                className="btn drum-btn"
-              >
-                Snare
-              </button>
+              <button className="btn drum-btn">Snare</button>
             </li>
             <li
-              className="audio__drum-item"
-              style={{
-                backgroundColor: quarterDrumAudios.hihatClosed
-                  ? "green"
-                  : "red",
-              }}
+              onClick={() => toggleQuarterDrumAudios("hihatClosed")}
+              className={`audio__drum-item ${
+                quarterDrumAudios.hihatClosed && "audio__drum-item--selected"
+              }`}
             >
-              <button
-                onClick={() => toggleQuarterDrumAudios("hihatClosed")}
-                className="btn drum-btn"
-              >
-                Hi-hat Closed
-              </button>
+              <button className="btn drum-btn">Hi-hat Closed</button>
             </li>
             <li
-              className="audio__drum-item"
-              style={{
-                backgroundColor: quarterDrumAudios.hihatOpen ? "green" : "red",
-              }}
+              onClick={() => toggleQuarterDrumAudios("hihatOpen")}
+              className={`audio__drum-item ${
+                quarterDrumAudios.hihatOpen && "audio__drum-item--selected"
+              }`}
             >
-              <button
-                onClick={() => toggleQuarterDrumAudios("hihatOpen")}
-                className="btn drum-btn"
-              >
-                Hi-hat Open
-              </button>
+              <button className="btn drum-btn">Hi-hat Open</button>
             </li>
             <li
-              className="audio__drum-item"
-              style={{
-                backgroundColor: quarterDrumAudios.bassDrum ? "green" : "red",
-              }}
+              onClick={() => toggleQuarterDrumAudios("bassDrum")}
+              className={`audio__drum-item ${
+                quarterDrumAudios.bassDrum && "audio__drum-item--selected"
+              }`}
             >
-              <button
-                onClick={() => toggleQuarterDrumAudios("bassDrum")}
-                className="btn drum-btn"
-              >
-                Bass Drum
-              </button>
+              <button className="btn drum-btn">Bass Drum</button>
             </li>
             <li
-              className="audio__drum-item"
-              style={{
-                backgroundColor: quarterDrumAudios.sticks ? "green" : "red",
-              }}
+              onClick={() => toggleQuarterDrumAudios("sticks")}
+              className={`audio__drum-item ${
+                quarterDrumAudios.sticks && "audio__drum-item--selected"
+              }`}
             >
-              <button
-                onClick={() => toggleQuarterDrumAudios("sticks")}
-                className="btn drum-btn"
-              >
-                Sticks
-              </button>
+              <button className="btn drum-btn">Sticks</button>
             </li>
           </ul>
         ) : null}
       </div>
 
       <div className="audio__control">
-        <h1 className="audio__control-title">Sub note sound</h1>
+        <h1 className="audio__control-title">Sub Note</h1>
         <div className="audio__control-switch">
-          <h1 className="audio__control-switch-title">Sound Type</h1>
           <button
-            className="btn audio-switch-btn"
+            className={`btn radio-btn ${
+              subSoundType === "Artificial" && "radio-btn--selected"
+            }`}
             onClick={() => {
               {
                 /* CALLBACK FUNCTION TO PREVENT UNNECESSARY RE-RENDER */
@@ -155,10 +132,12 @@ const AudioControl = () => {
               if (subSoundType !== "Artificial") setSubSoundType("Artificial");
             }}
           >
-            Artificial sound
+            Artificial
           </button>
           <button
-            className="btn audio-switch-btn"
+            className={`btn radio-btn ${
+              subSoundType === "Drum" && "radio-btn--selected"
+            }`}
             onClick={() => {
               {
                 /* CALLBACK FUNCTION TO PREVENT UNNECESSARY RE-RENDER */
@@ -166,12 +145,14 @@ const AudioControl = () => {
               if (subSoundType !== "Drum") setSubSoundType("Drum");
             }}
           >
-            Drum sounds
+            Drum
           </button>
         </div>
         {subSoundType === "Artificial" ? (
           <div className="audio__artificial">
-            <h2 className="audio__artificial-frequency-text">{subFrequency}</h2>
+            <h2 className="audio__artificial-frequency-text">
+              Frequency: <span>{subFrequency}</span>
+            </h2>
             <input
               className="slider type-frequency-slider"
               type="range"
@@ -191,67 +172,44 @@ const AudioControl = () => {
         ====================================
         */}
             <li
-              className="audio__drum-item"
-              style={{ backgroundColor: subDrumAudios.snare ? "green" : "red" }}
+              onClick={() => toggleSubDrumAudios("snare")}
+              className={`audio__drum-item ${
+                subDrumAudios.snare && "audio__drum-item--selected"
+              }`}
             >
-              <button
-                onClick={() => toggleSubDrumAudios("snare")}
-                className="btn drum-btn"
-              >
-                Snare
-              </button>
+              <button className="btn drum-btn">Snare</button>
             </li>
             <li
-              className="audio__drum-item"
-              style={{
-                backgroundColor: subDrumAudios.hihatClosed ? "green" : "red",
-              }}
+              onClick={() => toggleSubDrumAudios("hihatClosed")}
+              className={`audio__drum-item ${
+                subDrumAudios.hihatClosed && "audio__drum-item--selected"
+              }`}
             >
-              <button
-                onClick={() => toggleSubDrumAudios("hihatClosed")}
-                className="btn drum-btn"
-              >
-                Hi-hat Closed
-              </button>
+              <button className="btn drum-btn">Hi-hat Closed</button>
             </li>
             <li
-              className="audio__drum-item"
-              style={{
-                backgroundColor: subDrumAudios.hihatOpen ? "green" : "red",
-              }}
+              onClick={() => toggleSubDrumAudios("hihatOpen")}
+              className={`audio__drum-item ${
+                subDrumAudios.hihatOpen && "audio__drum-item--selected"
+              }`}
             >
-              <button
-                onClick={() => toggleSubDrumAudios("hihatOpen")}
-                className="btn drum-btn"
-              >
-                Hi-hat Open
-              </button>
+              <button className="btn drum-btn">Hi-hat Open</button>
             </li>
             <li
-              className="audio__drum-item"
-              style={{
-                backgroundColor: subDrumAudios.bassDrum ? "green" : "red",
-              }}
+              onClick={() => toggleSubDrumAudios("bassDrum")}
+              className={`audio__drum-item ${
+                subDrumAudios.bassDrum && "audio__drum-item--selected"
+              }`}
             >
-              <button
-                onClick={() => toggleSubDrumAudios("bassDrum")}
-                className="btn drum-btn"
-              >
-                Bass Drum
-              </button>
+              <button className="btn drum-btn">Bass Drum</button>
             </li>
             <li
-              className="audio__drum-item"
-              style={{
-                backgroundColor: subDrumAudios.sticks ? "green" : "red",
-              }}
+              onClick={() => toggleSubDrumAudios("sticks")}
+              className={`audio__drum-item ${
+                subDrumAudios.sticks && "audio__drum-item--selected"
+              }`}
             >
-              <button
-                onClick={() => toggleSubDrumAudios("sticks")}
-                className="btn drum-btn"
-              >
-                Sticks
-              </button>
+              <button className="btn drum-btn">Sticks</button>
             </li>
           </ul>
         ) : null}
