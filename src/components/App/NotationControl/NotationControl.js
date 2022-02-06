@@ -70,9 +70,18 @@ const NotationControl = () => {
       </ul>
 
       <div className="notation__stress">
-        <button onClick={toggleStressing} className="btn toggle-stress-btn">
-          Stress
-        </button>
+        <div className="notation__stress-toggle">
+          <h2 className="notation__stress-toggle-text">Stress</h2>
+          <div
+            onClick={toggleStressing}
+            className={`toggle ${isStressing && "toggle--on"}`}
+          >
+            <div className="toggle--text-off">OFF</div>
+            <div className="toggle-btn" />
+            <div className="toggle--text-on">ON</div>
+          </div>
+        </div>
+
         <div className="notation__stress-control">
           <button onClick={beatDown} className="btn up-btn">
             &ndash;
@@ -81,9 +90,11 @@ const NotationControl = () => {
           <button onClick={beatUp} className="btn down-btn">
             +
           </button>
+        </div>
 
-          <h2 className="notation_stress-frequency-text">
-            Stress Frequency: {stressFrequency}
+        <div className="notation__stress-frequency">
+          <h2 className="notation__stress-frequency-text">
+            Stress Frequency: <span>{stressFrequency}</span>
           </h2>
           <input
             className="slider stress-frequency-slider"
@@ -94,6 +105,12 @@ const NotationControl = () => {
             defaultValue={stressFrequency}
             onChange={(e) => slideStressFrequency(parseInt(e.target.value))}
           />
+        </div>
+      </div>
+
+      <div className="divider-container">
+        <div className="divider-lines">
+          <div className="divider-diamond"></div>
         </div>
       </div>
     </section>

@@ -1,5 +1,13 @@
 @use "../abstracts" as *;
 
+.notation {
+  margin-top: -2em;
+
+  .divider-container {
+    margin-top: -2em;
+  }
+}
+
 .notation__list {
   display: flex;
   align-items: center;
@@ -29,5 +37,62 @@
     border-radius: 5px;
     color: $primary-color;
     transition: all 0.3s ease;
+  }
+}
+
+/* STRESSING PART */
+
+.notation__stress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-toggle {
+    display: flex;
+    align-items: center;
+    margin: 4em 0 1em;
+
+    &-text {
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-right: 1em;
+    }
+  }
+
+  &-control {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2em;
+
+    .notation__stress-text {
+      font-size: 2rem;
+      color: $primary-color;
+      padding: 0 1em;
+    }
+
+    .up-btn,
+    .down-btn {
+      width: 1.4em;
+      height: 1.4em;
+      font-size: 2.2rem;
+    }
+  }
+
+  &-frequency {
+    padding: 3em 0 6em;
+    text-align: center;
+    &-text {
+      font-weight: 500;
+      padding-bottom: 1em;
+      letter-spacing: 1px;
+
+      span {
+        color: $primary-color;
+        font-size: 1.8rem;
+        margin-left: 0.1em;
+      }
+    }
   }
 }
