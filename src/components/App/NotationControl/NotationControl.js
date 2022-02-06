@@ -10,6 +10,8 @@ const NotationControl = () => {
     decreaseBarLength,
     isStressing,
     toggleStressing,
+    stressFrequency,
+    slideStressFrequency,
   } = useMetronomeContext();
 
   // FUNCTIONS FOR INCREASING/DECREASING BEAT NUMBER IN BAR
@@ -79,6 +81,19 @@ const NotationControl = () => {
           <button onClick={beatUp} className="btn down-btn">
             +
           </button>
+
+          <h2 className="notation_stress-frequency-text">
+            Stress Frequency: {stressFrequency}
+          </h2>
+          <input
+            className="slider stress-frequency-slider"
+            type="range"
+            min={200}
+            max={4000}
+            step={10}
+            defaultValue={stressFrequency}
+            onChange={(e) => slideStressFrequency(parseInt(e.target.value))}
+          />
         </div>
       </div>
     </section>

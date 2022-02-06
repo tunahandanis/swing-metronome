@@ -48,6 +48,21 @@
 
 /* SWING TOGGLE */
 
+.interface__swing-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.interface__swing-toggle-title {
+  letter-spacing: 2px;
+  margin: 0.7em;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1.7rem;
+}
+
 .toggle-swing {
   position: relative;
   width: 4.7em;
@@ -148,19 +163,4 @@
       padding-left: 0.05em;
     }
   }
-}
-
-.interface__swing-toggle {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.interface__swing-toggle-title {
-  letter-spacing: 2px;
-  margin: 0.7em;
-  text-transform: uppercase;
-  font-weight: 400;
-  font-size: 1.7rem;
 }

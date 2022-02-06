@@ -15,26 +15,10 @@ const AudioControl = () => {
     subSoundType,
     setQuarterSoundType,
     setSubSoundType,
-    stressFrequency,
-    slideStressFrequency,
   } = useMetronomeContext();
 
   return (
     <section className="audio">
-      <div className="audio__stress">
-        <h2 className="audio__stress-text">
-          Stress Frequency: {stressFrequency}
-        </h2>
-        <input
-          className="slider stress-frequency-slider"
-          type="range"
-          min={200}
-          max={4000}
-          step={10}
-          defaultValue={stressFrequency}
-          onChange={(e) => slideStressFrequency(parseInt(e.target.value))}
-        />
-      </div>
       <div className="audio__control">
         <h1 className="audio__control-title">Quarter note sound</h1>
         <div className="audio__control-switch">
