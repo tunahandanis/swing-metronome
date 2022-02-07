@@ -1,12 +1,18 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Routes } from "react-router-dom";
 import Metronome from "./routes/Metronome/Metronome";
 import Guide from "./routes/Guide/Guide";
+import Nav from "./Nav/Nav";
 
 function App() {
   return (
     <>
-      <Guide />
-      <Metronome />
+      <BrowserRouter>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Metronome />} />
+          <Route path="/guide" element={<Guide />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
