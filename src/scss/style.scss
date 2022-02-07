@@ -1,4 +1,5 @@
 @use "abstracts";
 @use "pieces";
 @use "base";
-@use "components";
+@use "components/routes/Metronome";
+@use "components/routes/Guide";

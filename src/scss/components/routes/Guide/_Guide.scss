@@ -1,0 +1,27 @@
+@use "../../../abstracts" as *;
+
+.guide__article {
+  padding: 2em;
+
+  .guide__title {
+    font-size: 2rem;
+    text-align: center;
+    letter-spacing: 2px;
+    color: $primary-color;
+    margin-bottom: 0.5em;
+  }
+
+  .guide__para {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    padding: 1em 0;
+  }
+
+  ul {
+    font-size: 1.1rem;
+
+    li {
+      margin-bottom: 0.3em;
+    }
+  }
+}

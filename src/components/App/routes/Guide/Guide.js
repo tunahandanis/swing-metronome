@@ -16,8 +16,8 @@ const Guide = () => {
           the first 8th note takes up as much as the swing percentage's time
           from the quarter beat, and the second 8th note takes the rest. Going
           by this logic, we could create a 'reverse swing' by going below 50%,
-          and 50% swing would be just straight 8th notes, no swing at all so to
-          speak. <br />
+          and 50% would be just straight 8th notes, no swing at all so to speak.{" "}
+          <br />
           <br /> Most commonly used swing percentages are: <br /> <br />
         </p>
         <ul>
@@ -59,9 +59,9 @@ const Guide = () => {
         <h1 className="guide__title">How does sound customization work?</h1>
         <p className="guide__para">
           In the bottom part of the 'Swing Metronome', the user could easily
-          customize the sounds for 'First Note' and 'Sub Note'. There are 2
-          options, drum sounds and artificial sound. Drum sounds are real
-          recordings. You could pick whichever you want to play together or
+          customize the sounds for 'First Note' and 'Sub Note'. <br /> <br />{" "}
+          There are 2 options, drum sounds and artificial sound. Drum sounds are
+          real recordings. You could pick whichever you want to play together or
           seperately for both 'First Note' and 'Sub Notes'. Artificial sound is
           a 'beep' sound at a specific frequency set by the user.
         </p>
