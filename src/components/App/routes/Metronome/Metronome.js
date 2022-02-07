@@ -7,12 +7,14 @@ import { MetronomeProvider } from "../../../../context/context";
 
 const Metronome = () => {
   return (
-    <MetronomeProvider>
-      <Header />
-      <MetronomeInterface />
-      <NotationControl />
-      <AudioControl />
-    </MetronomeProvider>
+    <main>
+      <MetronomeProvider>
+        <Header />
+        <MetronomeInterface />
+        <NotationControl />
+        <AudioControl />
+      </MetronomeProvider>
+    </main>
   );
 };
 

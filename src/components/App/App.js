@@ -9,7 +9,7 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Routes>
-          <Route path="/" element={<Metronome />} />
+          <Route exact path="/" element={<Metronome />} />
           <Route path="/guide" element={<Guide />} />
         </Routes>
       </BrowserRouter>
