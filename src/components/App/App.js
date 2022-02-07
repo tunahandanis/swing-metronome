@@ -1,17 +1,13 @@
-import MetronomeInterface from "./MetronomeInterface/MetronomeInterface";
-import NotationControl from "./NotationControl/NotationControl";
-import AudioControl from "./AudioControl/AudioControl";
-import Header from "./Header/Header";
-import { MetronomeProvider } from "../../context/context";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Metronome from "./routes/Metronome/Metronome";
+import Guide from "./routes/Guide/Guide";
 
 function App() {
   return (
-    <MetronomeProvider>
-      <Header />
-      <MetronomeInterface />
-      <NotationControl />
-      <AudioControl />
-    </MetronomeProvider>
+    <>
+      <Guide />
+      <Metronome />
+    </>
   );
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { useMetronomeContext } from "../../../context/context";
+import { useMetronomeContext } from "../../../../../context/context";
 
 const AudioControl = () => {
   const {
