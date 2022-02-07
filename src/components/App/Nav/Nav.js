@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   return (
     <nav>
-      <Link to="/">Home</Link>
-      <Link to="/guide">Guide</Link>
+      <Link to="/" className="nav__logo">
+        Swing
+      </Link>
+      <Link to="/guide" className="nav__guide">
+        Guide
+      </Link>
     </nav>
   );
 };
