@@ -4,9 +4,9 @@ const lookahead = 25;
 const currentSubLength = (subdivision) => {
   return subdivision === "First"
     ? 1
-    : subdivision === "Eighth"
+    : subdivision === "Duplet"
     ? 2
-    : subdivision === "Sixteenth"
+    : subdivision === "Quadruplet"
     ? 4
     : subdivision === "Triplet"
     ? 3

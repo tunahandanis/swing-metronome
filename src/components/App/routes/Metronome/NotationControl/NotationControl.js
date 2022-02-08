@@ -46,27 +46,27 @@ const NotationControl = () => {
               subdivision === "First" && "radio-btn--selected"
             }`}
           >
-            First
+            Quarter
           </button>
         </li>
         <li className="notation__list-item">
           <button
-            onClick={() => changeSubdivision("Eighth")}
+            onClick={() => changeSubdivision("Duplet")}
             className={`btn radio-btn ${
-              subdivision === "Eighth" && "radio-btn--selected"
+              subdivision === "Duplet" && "radio-btn--selected"
             }`}
           >
-            Eighth
+            Duplet
           </button>
         </li>
         <li className="notation__list-item">
           <button
-            onClick={() => changeSubdivision("Sixteenth")}
+            onClick={() => changeSubdivision("Quadruplet")}
             className={`btn radio-btn ${
-              subdivision === "Sixteenth" && "radio-btn--selected"
+              subdivision === "Quadruplet" && "radio-btn--selected"
             }`}
           >
-            Sixteenth
+            Quadruplet
           </button>
         </li>
         <li className="notation__list-item">
