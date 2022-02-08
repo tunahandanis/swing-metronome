@@ -1,59 +1,88 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useMetronomeContext } from "../../../../../context/context";
 
 const AudioControl = () => {
   const {
-    quarterDrumAudios,
+    firstDrumAudios,
     subDrumAudios,
-    toggleQuarterDrumAudios,
+    toggleFirstDrumAudios,
     toggleSubDrumAudios,
-    quarterFrequency,
+    firstFrequency,
     subFrequency,
-    slideQuarterFrequency,
+    slideFirstFrequency,
     slideSubFrequency,
-    quarterSoundType,
+    firstSoundType,
     subSoundType,
-    setQuarterSoundType,
+    setFirstSoundType,
     setSubSoundType,
   } = useMetronomeContext();
+
+  const firstRangeRef = useRef();
+  const subRangeRef = useRef();
+
+  // FREQUENCY CONTROL FUNCTIONS
+
+  const firstUp = () => {
+    if (firstFrequency < subRangeRef.current.max) {
+      slideSubFrequency(firstFrequency + parseInt(firstRangeRef.current.step));
+    }
+  };
+
+  const firstDown = () => {
+    if (firstFrequency > subRangeRef.current.min) {
+      slideSubFrequency(firstFrequency - parseInt(firstRangeRef.current.step));
+    }
+  };
+
+  const subUp = () => {
+    if (subFrequency < subRangeRef.current.max) {
+      slideSubFrequency(subFrequency + parseInt(subRangeRef.current.step));
+    }
+  };
+
+  const subDown = () => {
+    if (subFrequency > subRangeRef.current.min) {
+      slideSubFrequency(subFrequency - parseInt(subRangeRef.current.step));
+    }
+  };
 
   return (
     <section className="audio">
       <div className="audio__control">
-        <h1 className="audio__control-title">Quarter Note</h1>
+        <h1 className="audio__control-title">First Note</h1>
         <div className="audio__control-switch">
           <button
             className={`btn radio-btn ${
-              quarterSoundType === "Artificial" && "radio-btn--selected"
+              firstSoundType === "Artificial" && "radio-btn--selected"
             }`}
             onClick={() => {
               {
                 /* CALLBACK FUNCTION TO PREVENT UNNECESSARY RE-RENDER */
               }
-              if (quarterSoundType !== "Artificial")
-                setQuarterSoundType("Artificial");
+              if (firstSoundType !== "Artificial")
+                setFirstSoundType("Artificial");
             }}
           >
             Artificial
           </button>
           <button
             className={`btn radio-btn ${
-              quarterSoundType === "Drum" && "radio-btn--selected"
+              firstSoundType === "Drum" && "radio-btn--selected"
             }`}
             onClick={() => {
               {
                 /* CALLBACK FUNCTION TO PREVENT UNNECESSARY RE-RENDER */
               }
-              if (quarterSoundType !== "Drum") setQuarterSoundType("Drum");
+              if (firstSoundType !== "Drum") setFirstSoundType("Drum");
             }}
           >
             Drum
           </button>
         </div>
-        {quarterSoundType === "Artificial" ? (
+        {firstSoundType === "Artificial" ? (
           <div className="audio__artificial">
             <h2 className="audio__artificial-frequency-text">
-              Frequency: <span>{quarterFrequency}</span>
+              Frequency: <span>{firstFrequency}</span>
             </h2>
 
             <input
@@ -62,11 +91,11 @@ const AudioControl = () => {
               min={200}
               max={4000}
               step={10}
-              defaultValue={quarterFrequency}
-              onChange={(e) => slideQuarterFrequency(parseInt(e.target.value))}
+              defaultValue={firstFrequency}
+              onChange={(e) => slideFirstFrequency(parseInt(e.target.value))}
             />
           </div>
-        ) : quarterSoundType === "Drum" ? (
+        ) : firstSoundType === "Drum" ? (
           <ul className="audio__drum">
             {/*
         ====================================
@@ -75,41 +104,41 @@ const AudioControl = () => {
         ====================================
         */}
             <li
-              onClick={() => toggleQuarterDrumAudios("snare")}
+              onClick={() => toggleFirstDrumAudios("snare")}
               className={`audio__drum-item ${
-                quarterDrumAudios.snare && "audio__drum-item--selected"
+                firstDrumAudios.snare && "audio__drum-item--selected"
               }`}
             >
               <button className="btn drum-btn">Snare</button>
             </li>
             <li
-              onClick={() => toggleQuarterDrumAudios("hihatClosed")}
+              onClick={() => toggleFirstDrumAudios("hihatClosed")}
               className={`audio__drum-item ${
-                quarterDrumAudios.hihatClosed && "audio__drum-item--selected"
+                firstDrumAudios.hihatClosed && "audio__drum-item--selected"
               }`}
             >
               <button className="btn drum-btn">Hi-hat Closed</button>
             </li>
             <li
-              onClick={() => toggleQuarterDrumAudios("hihatOpen")}
+              onClick={() => toggleFirstDrumAudios("hihatOpen")}
               className={`audio__drum-item ${
-                quarterDrumAudios.hihatOpen && "audio__drum-item--selected"
+                firstDrumAudios.hihatOpen && "audio__drum-item--selected"
               }`}
             >
               <button className="btn drum-btn">Hi-hat Open</button>
             </li>
             <li
-              onClick={() => toggleQuarterDrumAudios("bassDrum")}
+              onClick={() => toggleFirstDrumAudios("bassDrum")}
               className={`audio__drum-item ${
-                quarterDrumAudios.bassDrum && "audio__drum-item--selected"
+                firstDrumAudios.bassDrum && "audio__drum-item--selected"
               }`}
             >
               <button className="btn drum-btn">Bass Drum</button>
             </li>
             <li
-              onClick={() => toggleQuarterDrumAudios("sticks")}
+              onClick={() => toggleFirstDrumAudios("sticks")}
               className={`audio__drum-item ${
-                quarterDrumAudios.sticks && "audio__drum-item--selected"
+                firstDrumAudios.sticks && "audio__drum-item--selected"
               }`}
             >
               <button className="btn drum-btn">Sticks</button>
@@ -153,15 +182,24 @@ const AudioControl = () => {
             <h2 className="audio__artificial-frequency-text">
               Frequency: <span>{subFrequency}</span>
             </h2>
-            <input
-              className="slider type-frequency-slider"
-              type="range"
-              min={200}
-              max={4000}
-              step={10}
-              defaultValue={subFrequency}
-              onChange={(e) => slideSubFrequency(parseInt(e.target.value))}
-            />
+            <div className="audio__artificial-control">
+              <button onClick={subDown} className="btn down-btn">
+                &ndash;
+              </button>
+              <input
+                className="slider type-frequency-slider"
+                type="range"
+                min={200}
+                max={4000}
+                step={10}
+                value={subFrequency}
+                ref={subRangeRef}
+                onChange={(e) => slideSubFrequency(parseInt(e.target.value))}
+              />
+            </div>
+            <button onClick={subUp} className="btn down-btn">
+              +
+            </button>
           </div>
         ) : subSoundType === "Drum" ? (
           <ul className="audio__drum">

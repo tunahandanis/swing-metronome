@@ -30,10 +30,10 @@ const initialState = {
   isRunning: false,
   tempo: 60,
   swingPercentage: 50,
-  subdivision: "Quarter",
+  subdivision: "First",
   barLength: 2,
   isStressing: false,
-  quarterDrumAudios: {
+  firstDrumAudios: {
     snare: true,
     hihatOpen: false,
     hihatClosed: false,
@@ -47,9 +47,9 @@ const initialState = {
     bassDrum: false,
     sticks: true,
   },
-  quarterFrequency: 800,
+  firstFrequency: 800,
   subFrequency: 600,
-  quarterSoundType: "Drum",
+  firstSoundType: "Drum",
   subSoundType: "Drum",
   stressFrequency: 1500,
   swingActive: false,
@@ -71,11 +71,11 @@ const MetronomeProvider = ({ children }) => {
     barLength,
     isStressing,
     swingPercentage,
-    quarterDrumAudios,
+    firstDrumAudios,
     subDrumAudios,
-    quarterFrequency,
+    firstFrequency,
     subFrequency,
-    quarterSoundType,
+    firstSoundType,
     subSoundType,
     stressFrequency,
     swingActive,
@@ -93,7 +93,7 @@ const MetronomeProvider = ({ children }) => {
   // These are for avoiding metronome reset after tempo, frequency or swing changes for smoother transitions
   const tempoRef = useRef(tempo);
   const swingRef = useRef(swingPercentage);
-  const quarterFrequencyRef = useRef(quarterFrequency);
+  const firstFrequencyRef = useRef(firstFrequency);
   const subFrequencyRef = useRef(subFrequency);
   const stressFrequencyRef = useRef(stressFrequency);
 
@@ -117,9 +117,9 @@ const MetronomeProvider = ({ children }) => {
     subdivision,
     barLength,
     isStressing,
-    quarterDrumAudios,
+    firstDrumAudios,
     subDrumAudios,
-    quarterSoundType,
+    firstSoundType,
     subSoundType,
     swingActive,
   ]);
@@ -128,10 +128,10 @@ const MetronomeProvider = ({ children }) => {
     // Keeping tempo and swing percentage global for affecting inside functions
     tempoRef.current = tempo;
     swingRef.current = swingPercentage;
-    quarterFrequencyRef.current = quarterFrequency;
+    firstFrequencyRef.current = firstFrequency;
     subFrequencyRef.current = subFrequency;
     stressFrequencyRef.current = stressFrequency;
-  }, [tempo, swingPercentage, quarterFrequency, subFrequency, stressFrequency]);
+  }, [tempo, swingPercentage, firstFrequency, subFrequency, stressFrequency]);
 
   /*
   ==========================
@@ -145,7 +145,7 @@ const MetronomeProvider = ({ children }) => {
 
   // These are for adjusting subdivision notes, stressed notes and swing notes, counting the queue
   let currentSubNote = 0;
-  let currentQuarterNote = 0;
+  let currentFirstNote = 0;
   let currentSwingNote = 0;
 
   let nextNoteTime = 0.0;
@@ -214,17 +214,17 @@ const MetronomeProvider = ({ children }) => {
 
   // CHANGE DRUM AUDIOS
 
-  const toggleQuarterDrumAudios = (e) => {
-    // IF STATEMENTS PREVENTS ALL QUARTER DRUM SOUNDS BEING FALSE
+  const toggleFirstDrumAudios = (e) => {
+    // IF STATEMENTS PREVENTS ALL FIRST DRUM SOUNDS BEING FALSE
     if (
-      Object.values(quarterDrumAudios).reduce(
+      Object.values(firstDrumAudios).reduce(
         (prev, curr) => (curr ? prev + 1 : prev),
         0
       ) > 1 ||
-      !quarterDrumAudios[e]
+      !firstDrumAudios[e]
     ) {
       dispatch({
-        type: ACTIONS.TOGGLE_QUARTER_DRUM_AUDIOS,
+        type: ACTIONS.TOGGLE_FIRST_DRUM_AUDIOS,
         payload: { toggledAudio: e },
       });
     }
@@ -248,9 +248,9 @@ const MetronomeProvider = ({ children }) => {
 
   // CHANGE ARTIFICIAL SOUND FREQUENCIES
 
-  const slideQuarterFrequency = (e) => {
+  const slideFirstFrequency = (e) => {
     dispatch({
-      type: ACTIONS.SLIDE_QUARTER_FREQUENCY,
+      type: ACTIONS.SLIDE_FIRST_FREQUENCY,
       payload: { newFrequency: e },
     });
   };
@@ -264,9 +264,9 @@ const MetronomeProvider = ({ children }) => {
 
   // SET SOUND TYPES
 
-  const setQuarterSoundType = (e) => {
+  const setFirstSoundType = (e) => {
     dispatch({
-      type: ACTIONS.SET_QUARTER_SOUND_TYPE,
+      type: ACTIONS.SET_FIRST_SOUND_TYPE,
       payload: { newSoundType: e },
     });
   };
@@ -341,7 +341,7 @@ const MetronomeProvider = ({ children }) => {
     turnOn();
 
     // Resetting the beat number in bar
-    currentQuarterNote = 0;
+    currentFirstNote = 0;
     currentSubNote = 0;
     currentSwingNote = 0;
 
@@ -380,7 +380,7 @@ const MetronomeProvider = ({ children }) => {
 
   const scheduleNote = (time) => {
     const stressing =
-      isStressing && currentSubNote === 0 && currentQuarterNote === 0;
+      isStressing && currentSubNote === 0 && currentFirstNote === 0;
 
     // CHECK IF THE NEXT NOTE WILL BE STRESSED
     if (stressing) {
@@ -390,21 +390,21 @@ const MetronomeProvider = ({ children }) => {
       osc.start(time);
       osc.stop(time + 0.025);
     } else {
-      // CHECK IF THE NEXT NOTE WILL BE SUB OR QUARTER
+      // CHECK IF THE NEXT NOTE WILL BE SUB OR FIRST
       if (currentSubNote === 0) {
-        // CHECK IF THE NEXT QUARTER NOTE WILL BE ARTIFICIAL OR DRUM SOUND
-        if (quarterSoundType === "Artificial") {
+        // CHECK IF THE NEXT FIRST NOTE WILL BE ARTIFICIAL OR DRUM SOUND
+        if (firstSoundType === "Artificial") {
           const osc = audioContext.current.createOscillator();
 
-          osc.frequency.value = quarterFrequencyRef.current;
+          osc.frequency.value = firstFrequencyRef.current;
 
           osc.connect(audioContext.current.destination);
 
           osc.start(time);
           osc.stop(time + 0.025);
-        } else if (quarterSoundType === "Drum") {
-          for (let audio in quarterDrumAudios) {
-            if (quarterDrumAudios[audio]) {
+        } else if (firstSoundType === "Drum") {
+          for (let audio in firstDrumAudios) {
+            if (firstDrumAudios[audio]) {
               const source = audioContext.current.createBufferSource();
 
               source.buffer = audioFilesRef.current[audio];
@@ -460,13 +460,13 @@ const MetronomeProvider = ({ children }) => {
     console.log(nextNoteTime);
 
     // Counting for sub-notes and stressing
-    currentQuarterNote++;
+    currentFirstNote++;
     currentSubNote++;
     currentSwingNote++;
 
     // Checking reset for sub-notes, swing and stressing
-    if (currentQuarterNote === barLength * currentSubLength(subdivision))
-      currentQuarterNote = 0;
+    if (currentFirstNote === barLength * currentSubLength(subdivision))
+      currentFirstNote = 0;
     if (currentSubNote === currentSubLength(subdivision)) currentSubNote = 0;
     if (currentSwingNote === 2) currentSwingNote = 0;
   };
@@ -495,17 +495,17 @@ const MetronomeProvider = ({ children }) => {
         decreaseBarLength,
         isStressing,
         toggleStressing,
-        quarterDrumAudios,
+        firstDrumAudios,
         subDrumAudios,
-        toggleQuarterDrumAudios,
+        toggleFirstDrumAudios,
         toggleSubDrumAudios,
-        quarterFrequency,
+        firstFrequency,
         subFrequency,
-        slideQuarterFrequency,
+        slideFirstFrequency,
         slideSubFrequency,
-        quarterSoundType,
+        firstSoundType,
         subSoundType,
-        setQuarterSoundType,
+        setFirstSoundType,
         setSubSoundType,
         stressFrequency,
         slideStressFrequency,

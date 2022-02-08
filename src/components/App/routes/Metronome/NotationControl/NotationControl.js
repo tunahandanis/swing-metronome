@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useMetronomeContext } from "../../../../../context/context";
 
 const NotationControl = () => {
@@ -14,6 +14,8 @@ const NotationControl = () => {
     slideStressFrequency,
   } = useMetronomeContext();
 
+  const rangeRef = useRef();
+
   // FUNCTIONS FOR INCREASING/DECREASING BEAT NUMBER IN BAR
 
   const beatUp = () => {
@@ -24,17 +26,27 @@ const NotationControl = () => {
     if (barLength > 2) decreaseBarLength();
   };
 
+  const stressUp = () => {
+    if (stressFrequency < rangeRef.current.max)
+      slideStressFrequency(stressFrequency + rangeRef.current.step);
+  };
+
+  const stressDown = () => {
+    if (stressFrequency > rangeRef.current.min)
+      slideStressFrequency(stressFrequency - rangeRef.current.step);
+  };
+
   return (
     <section className="notation">
       <ul className="notation__list">
         <li className="notation__list-item">
           <button
-            onClick={() => changeSubdivision("Quarter")}
+            onClick={() => changeSubdivision("First")}
             className={`btn radio-btn ${
-              subdivision === "Quarter" && "radio-btn--selected"
+              subdivision === "First" && "radio-btn--selected"
             }`}
           >
-            Quarter
+            First
           </button>
         </li>
         <li className="notation__list-item">
@@ -96,15 +108,24 @@ const NotationControl = () => {
           <h2 className="notation__stress-frequency-text">
             Stress Frequency: <span>{stressFrequency}</span>
           </h2>
-          <input
-            className="slider stress-frequency-slider"
-            type="range"
-            min={200}
-            max={4000}
-            step={10}
-            defaultValue={stressFrequency}
-            onChange={(e) => slideStressFrequency(parseInt(e.target.value))}
-          />
+          <div className="notation__stress-frequency-control">
+            <button onClick={stressDown} className="btn down-btn">
+              &ndash;
+            </button>
+            <input
+              className="slider stress-frequency-slider"
+              type="range"
+              min={200}
+              max={4000}
+              step={10}
+              ref={rangeRef}
+              value={stressFrequency}
+              onChange={(e) => slideStressFrequency(parseInt(e.target.value))}
+            />
+            <button onClick={stressUp} className="btn down-btn">
+              +
+            </button>
+          </div>
         </div>
       </div>
 

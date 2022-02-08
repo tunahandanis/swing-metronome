@@ -23,12 +23,20 @@ const MetronomeInterface = () => {
 
   // Functions for increasing/decreasing bpm by buttons
 
-  const stepUp = () => {
+  const tempoStepUp = () => {
     if (tempo < rangeRef.current.max) increaseTempo();
   };
 
-  const stepDown = () => {
+  const tempoStepDown = () => {
     if (tempo > rangeRef.current.min) decreaseTempo();
+  };
+
+  const swingStepUp = () => {
+    if (swingPercentage < 100) slideSwing(swingPercentage + 1);
+  };
+
+  const swingStepDown = () => {
+    if (swingPercentage > 0) slideSwing(swingPercentage - 1);
   };
 
   return (
@@ -38,7 +46,7 @@ const MetronomeInterface = () => {
           <span className="interface__tempo-text-span">{tempo}</span>BPM
         </h1>
         <div className="interface__tempo-control">
-          <button onClick={stepDown} className="btn down-btn">
+          <button onClick={tempoStepDown} className="btn down-btn">
             &ndash;
           </button>
           <input
@@ -50,16 +58,16 @@ const MetronomeInterface = () => {
             value={tempo}
             onChange={(e) => slideTempo(parseInt(e.target.value))}
           />
-          <button onClick={stepUp} className="btn up-btn">
+          <button onClick={tempoStepUp} className="btn up-btn">
             +
           </button>
         </div>
 
         <button onClick={startStop} className="btn start-stop-btn">
           {isRunning ? (
-            <PauseIcon sx={{ fontSize: "3.2rem" }} />
+            <PauseIcon sx={{ fontSize: "2.5rem" }} />
           ) : (
-            <PlayArrowIcon sx={{ fontSize: "3.5rem" }} />
+            <PlayArrowIcon sx={{ fontSize: "2.7rem" }} />
           )}
         </button>
 
@@ -81,18 +89,27 @@ const MetronomeInterface = () => {
       {swingActive && (
         <div className="interface__swing container">
           <h1 className="interface__swing-text">
-            Swing Percentage:{" "}
+            Swing Percentage:
             <span className="interface__swing-text-span">
               {swingPercentage}%
             </span>
           </h1>
-          <input
-            className="slider swing-slider"
-            type="range"
-            min={0}
-            max={100}
-            onChange={(e) => slideSwing(parseInt(e.target.value))}
-          />
+          <div className="interface__swing-control">
+            <button onClick={swingStepDown} className="btn down-btn">
+              &ndash;
+            </button>{" "}
+            <input
+              className="slider swing-slider"
+              type="range"
+              min={0}
+              max={100}
+              value={swingPercentage}
+              onChange={(e) => slideSwing(parseInt(e.target.value))}
+            />
+            <button onClick={swingStepUp} className="btn up-btn">
+              +
+            </button>
+          </div>
         </div>
       )}
 

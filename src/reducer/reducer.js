@@ -27,13 +27,13 @@ const reducer = (state, action) => {
     case ACTIONS.DECREASE_BAR_LENGTH:
       return { ...state, barLength: state.barLength - 1 };
 
-    case ACTIONS.TOGGLE_QUARTER_DRUM_AUDIOS:
+    case ACTIONS.TOGGLE_FIRST_DRUM_AUDIOS:
       return {
         ...state,
-        quarterDrumAudios: {
-          ...state.quarterDrumAudios,
+        firstDrumAudios: {
+          ...state.firstDrumAudios,
           [action.payload.toggledAudio]:
-            !state.quarterDrumAudios[action.payload.toggledAudio],
+            !state.firstDrumAudios[action.payload.toggledAudio],
         },
       };
     case ACTIONS.TOGGLE_SUB_DRUM_AUDIOS:
@@ -46,13 +46,13 @@ const reducer = (state, action) => {
         },
       };
 
-    case ACTIONS.SLIDE_QUARTER_FREQUENCY:
-      return { ...state, quarterFrequency: action.payload.newFrequency };
+    case ACTIONS.SLIDE_FIRST_FREQUENCY:
+      return { ...state, firstFrequency: action.payload.newFrequency };
     case ACTIONS.SLIDE_SUB_FREQUENCY:
       return { ...state, subFrequency: action.payload.newFrequency };
 
-    case ACTIONS.SET_QUARTER_SOUND_TYPE:
-      return { ...state, quarterSoundType: action.payload.newSoundType };
+    case ACTIONS.SET_FIRST_SOUND_TYPE:
+      return { ...state, firstSoundType: action.payload.newSoundType };
     case ACTIONS.SET_SUB_SOUND_TYPE:
       return { ...state, subSoundType: action.payload.newSoundType };
 
