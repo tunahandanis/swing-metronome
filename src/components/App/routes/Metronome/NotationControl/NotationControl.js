@@ -28,12 +28,12 @@ const NotationControl = () => {
 
   const stressUp = () => {
     if (stressFrequency < rangeRef.current.max)
-      slideStressFrequency(stressFrequency + rangeRef.current.step);
+      slideStressFrequency(stressFrequency + parseInt(rangeRef.current.step));
   };
 
   const stressDown = () => {
     if (stressFrequency > rangeRef.current.min)
-      slideStressFrequency(stressFrequency - rangeRef.current.step);
+      slideStressFrequency(stressFrequency - parseInt(rangeRef.current.step));
   };
 
   return (

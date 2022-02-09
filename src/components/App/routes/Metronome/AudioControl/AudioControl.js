@@ -23,14 +23,18 @@ const AudioControl = () => {
   // FREQUENCY CONTROL FUNCTIONS
 
   const firstUp = () => {
-    if (firstFrequency < subRangeRef.current.max) {
-      slideSubFrequency(firstFrequency + parseInt(firstRangeRef.current.step));
+    if (firstFrequency < firstRangeRef.current.max) {
+      slideFirstFrequency(
+        firstFrequency + parseInt(firstRangeRef.current.step)
+      );
     }
   };
 
   const firstDown = () => {
-    if (firstFrequency > subRangeRef.current.min) {
-      slideSubFrequency(firstFrequency - parseInt(firstRangeRef.current.step));
+    if (firstFrequency > firstRangeRef.current.min) {
+      slideFirstFrequency(
+        firstFrequency - parseInt(firstRangeRef.current.step)
+      );
     }
   };
 
@@ -84,16 +88,24 @@ const AudioControl = () => {
             <h2 className="audio__artificial-frequency-text">
               Frequency: <span>{firstFrequency}</span>
             </h2>
-
-            <input
-              className="slider type-frequency-slider"
-              type="range"
-              min={200}
-              max={4000}
-              step={10}
-              defaultValue={firstFrequency}
-              onChange={(e) => slideFirstFrequency(parseInt(e.target.value))}
-            />
+            <div className="audio__artificial-control">
+              <button onClick={firstDown} className="btn down-btn">
+                &ndash;
+              </button>
+              <input
+                className="slider type-frequency-slider"
+                type="range"
+                min={200}
+                max={4000}
+                step={10}
+                ref={firstRangeRef}
+                value={firstFrequency}
+                onChange={(e) => slideFirstFrequency(parseInt(e.target.value))}
+              />
+              <button onClick={firstUp} className="btn down-btn">
+                +
+              </button>
+            </div>
           </div>
         ) : firstSoundType === "Drum" ? (
           <ul className="audio__drum">
@@ -196,10 +208,10 @@ const AudioControl = () => {
                 ref={subRangeRef}
                 onChange={(e) => slideSubFrequency(parseInt(e.target.value))}
               />
+              <button onClick={subUp} className="btn down-btn">
+                +
+              </button>
             </div>
-            <button onClick={subUp} className="btn down-btn">
-              +
-            </button>
           </div>
         ) : subSoundType === "Drum" ? (
           <ul className="audio__drum">

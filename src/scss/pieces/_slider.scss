@@ -1,10 +1,10 @@
 @use "../abstracts";
 
 .slider {
-  width: 17em;
+  width: 11em;
   background: abstracts.$slider-color;
   border-radius: 0.5em;
-  margin: 1em;
+  margin: 0.8em;
 
   appearance: none;
   &:focus {

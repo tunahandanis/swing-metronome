@@ -11,8 +11,8 @@
 
 .up-btn,
 .down-btn {
-  width: 1.5em;
-  height: 1.5em;
+  width: 1.2em;
+  height: 1.2em;
   border-radius: 50%;
   font-size: 2.5rem;
   display: inline-flex;
@@ -28,21 +28,21 @@
 
 .toggle {
   position: relative;
-  width: 4.7em;
-  height: 2.5em;
+  width: 3.95em;
+  height: 2em;
   border: 2px solid #444249;
-  border-radius: 20px;
+  border-radius: 1.25em;
   -webkit-transition: border-color 0.6s ease-out;
   transition: border-color 0.6s ease-out;
 
   &-btn {
     position: absolute;
-    top: 4px;
-    width: 1.8em;
-    bottom: 4px;
-    right: 39px;
+    top: 11%;
+    width: 1.45em;
+    bottom: 10%;
+    right: 55%;
     background-color: #444249;
-    border-radius: 19px;
+    border-radius: 1.25em;
     cursor: pointer;
     -webkit-transition: all 0.3s 0.1s, width 0.1s, top 0.1s, bottom 0.1s;
     transition: all 0.3s 0.1s, width 0.1s, top 0.1s, bottom 0.1s;
@@ -53,7 +53,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: 500;
     cursor: pointer;
     -webkit-user-select: none; /* Chrome/Safari */
@@ -66,8 +66,8 @@
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
-    right: 6px;
-    font-size: 0.9rem;
+    right: 8%;
+    font-size: 0.7rem;
     font-weight: 600;
     -webkit-user-select: none; /* Chrome/Safari */
     -moz-user-select: none; /* Firefox */
@@ -85,13 +85,13 @@
   transition: all 0.5s 0.15s ease-out;
 
   .toggle-btn {
-    top: 3px;
-    width: 4em;
-    bottom: 3px;
-    right: 3px;
-    border-radius: 23px;
+    top: 9%;
+    width: 3.2em;
+    bottom: 10%;
+    right: 6%;
+    border-radius: 1.45em;
     background-color: $primary-color;
-    box-shadow: 0 0 16px #4b7a8d;
+    box-shadow: 0 0 1em #4b7a8d;
     -webkit-transition: all 0.2s 0.1s, right 0.1s;
     transition: all 0.2s 0.1s, right 0.1s;
   }
@@ -111,16 +111,16 @@
 
 .radio-btn {
   height: 4em;
-  width: 6em;
+  width: 6.5em;
   letter-spacing: 1px;
   border: none;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   transition: all 0.3s ease;
 
   &--selected {
     box-shadow: inset 0.1rem 0.1rem 0.25rem $primary-color,
       inset -0.1rem -0.1rem 0.25rem $primary-color;
-    border-radius: 5px;
+    border-radius: 0.3em;
     color: $primary-color;
     transition: all 0.3s ease;
   }

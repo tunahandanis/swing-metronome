@@ -2,7 +2,7 @@
 
 .audio__control {
   text-align: center;
-  padding: 3em 1.5em;
+  padding: 1em 1.5em;
 
   &-title {
     font-size: 1.8rem;
@@ -22,24 +22,35 @@
 }
 
 .audio__artificial {
+  &-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   &-frequency-text {
     font-weight: 500;
     letter-spacing: 1px;
+    font-size: 1.4rem;
 
     span {
       color: $primary-color;
-      font-size: 1.8rem;
+      font-size: 1.7rem;
     }
     margin-bottom: 0.8em;
   }
 }
 
 .audio__drum {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   &-item {
-    padding: 1em;
+    padding: 1em 0;
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 1em;
+    width: 80%;
 
     .drum-btn {
       border: none;
