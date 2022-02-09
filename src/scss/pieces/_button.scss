@@ -19,6 +19,11 @@
   justify-content: center;
   align-items: center;
 
+  @include mq(small) {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
   &:active {
     box-shadow: 0px 0px 0.2em #ffffff;
   }
@@ -94,6 +99,10 @@
     box-shadow: 0 0 1em #4b7a8d;
     -webkit-transition: all 0.2s 0.1s, right 0.1s;
     transition: all 0.2s 0.1s, right 0.1s;
+
+    @include mq(small) {
+      top: 11%;
+    }
   }
 
   .toggle--text-on {
@@ -116,6 +125,12 @@
   border: none;
   font-size: 1.2rem;
   transition: all 0.3s ease;
+
+  @include mq(small) {
+    height: 4.5em;
+    width: 7em;
+    font-size: 1.3rem;
+  }
 
   &--selected {
     box-shadow: inset 0.1rem 0.1rem 0.25rem $primary-color,

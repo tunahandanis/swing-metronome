@@ -10,6 +10,10 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-bottom: 1.5em;
+
+    @include mq(small) {
+      font-size: 2rem;
+    }
   }
 
   &-switch {
@@ -33,9 +37,17 @@
     letter-spacing: 1px;
     font-size: 1.4rem;
 
+    @include mq(small) {
+      font-size: 1.5rem;
+    }
+
     span {
       color: $primary-color;
       font-size: 1.7rem;
+
+      @include mq(small) {
+        font-size: 1.9rem;
+      }
     }
     margin-bottom: 0.8em;
   }

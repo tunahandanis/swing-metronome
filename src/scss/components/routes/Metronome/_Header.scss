@@ -1,3 +1,5 @@
+@use "../../../abstracts" as *;
+
 .header {
   padding: 3em;
 
@@ -8,5 +10,9 @@
     font-weight: 300;
     letter-spacing: 2px;
     line-height: 1.5;
+
+    @include mq(small) {
+      font-size: 3.2rem;
+    }
   }
 }

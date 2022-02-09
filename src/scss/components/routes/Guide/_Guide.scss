@@ -9,12 +9,20 @@
     letter-spacing: 2px;
     color: $primary-color;
     margin-bottom: 0.5em;
+
+    @include mq(small) {
+      font-size: 2rem;
+    }
   }
 
   .guide__para {
     font-size: 1rem;
     line-height: 1.4;
     padding: 1em 0;
+
+    @include mq(small) {
+      font-size: 1.1rem;
+    }
   }
 
   ul {
