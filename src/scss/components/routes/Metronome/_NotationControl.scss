@@ -18,8 +18,12 @@
 
   &-item {
     flex: 0 0 40%;
-    margin: 2em 0;
+    margin: 2em 1em;
     text-align: center;
+
+    @include mq(medium) {
+      margin: 2em 0;
+    }
   }
 }
 
