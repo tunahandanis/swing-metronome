@@ -10,6 +10,10 @@
     width: 13em;
   }
 
+  @include mq(medium) {
+    width: 17em;
+  }
+
   appearance: none;
   &:focus {
     outline: none;

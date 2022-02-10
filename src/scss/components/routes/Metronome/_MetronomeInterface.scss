@@ -27,6 +27,10 @@
     font-size: 2.4rem;
   }
 
+  @include mq(medium) {
+    font-size: 2.8rem;
+  }
+
   &-span {
     color: $primary-color;
     font-size: 3rem;
@@ -34,6 +38,10 @@
 
     @include mq(small) {
       font-size: 3.6rem;
+    }
+
+    @include mq(medium) {
+      font-size: 4rem;
     }
   }
 }
@@ -54,6 +62,11 @@
     width: 5em;
   }
 
+  @include mq(medium) {
+    height: 6em;
+    width: 6em;
+  }
+
   &:active {
     box-shadow: 0px 0px 0.5em #ffffff;
   }
@@ -64,6 +77,10 @@
 
     @include mq(small) {
       font-size: 3rem !important;
+    }
+
+    @include mq(medium) {
+      font-size: 3.5rem !important;
     }
   }
 }
@@ -86,6 +103,10 @@
 
   @include mq(small) {
     font-size: 1.7rem;
+  }
+
+  @include mq(medium) {
+    font-size: 2rem;
   }
 }
 
@@ -114,6 +135,10 @@
       font-size: 1.5rem;
     }
 
+    @include mq(medium) {
+      font-size: 1.8rem;
+    }
+
     &-span {
       font-size: 2.5rem;
       color: $primary-color;
@@ -121,6 +146,10 @@
 
       @include mq(small) {
         font-size: 2.8rem;
+      }
+
+      @include mq(medium) {
+        font-size: 3.2rem;
       }
     }
   }

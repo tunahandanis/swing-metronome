@@ -20,6 +20,10 @@ nav {
     @include mq(small) {
       font-size: 2rem;
     }
+
+    @include mq(medium) {
+      font-size: 2.5rem;
+    }
   }
 
   .nav__guide {
@@ -32,6 +36,10 @@ nav {
 
     @include mq(small) {
       font-size: 1.6rem;
+    }
+
+    @include mq(medium) {
+      font-size: 2rem;
     }
 
     &:hover {

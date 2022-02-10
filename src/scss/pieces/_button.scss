@@ -24,6 +24,12 @@
     height: 1.5em;
   }
 
+  @include mq(medium) {
+    width: 1.7em;
+    height: 1.7em;
+    font-size: 2.8rem;
+  }
+
   &:active {
     box-shadow: 0px 0px 0.2em #ffffff;
   }
@@ -40,6 +46,11 @@
   -webkit-transition: border-color 0.6s ease-out;
   transition: border-color 0.6s ease-out;
 
+  @include mq(medium) {
+    width: 4.8em;
+    height: 2.4em;
+  }
+
   &-btn {
     position: absolute;
     top: 11%;
@@ -51,6 +62,12 @@
     cursor: pointer;
     -webkit-transition: all 0.3s 0.1s, width 0.1s, top 0.1s, bottom 0.1s;
     transition: all 0.3s 0.1s, width 0.1s, top 0.1s, bottom 0.1s;
+
+    @include mq(medium) {
+      top: 9%;
+      width: 1.8em;
+      right: 57%;
+    }
   }
 
   &--text-on {
@@ -65,6 +82,10 @@
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+ */
     color: rgba(0, 0, 0, 0);
+
+    @include mq(medium) {
+      font-size: 1.1rem;
+    }
   }
 
   &--text-off {
@@ -77,10 +98,12 @@
     -webkit-user-select: none; /* Chrome/Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+ */
-
     cursor: pointer;
-
     color: #444249;
+
+    @include mq(medium) {
+      font-size: 0.85rem;
+    }
   }
 }
 
@@ -102,6 +125,12 @@
 
     @include mq(small) {
       top: 11%;
+    }
+
+    @include mq(medium) {
+      bottom: 11%;
+      width: 3.9em;
+      right: 7%;
     }
   }
 
@@ -130,6 +159,12 @@
     height: 4.5em;
     width: 7em;
     font-size: 1.3rem;
+  }
+
+  @include mq(medium) {
+    height: 5em;
+    width: 7.5em;
+    font-size: 1.4rem;
   }
 
   &--selected {

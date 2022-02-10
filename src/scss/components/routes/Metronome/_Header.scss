@@ -14,5 +14,13 @@
     @include mq(small) {
       font-size: 3.2rem;
     }
+
+    @include mq(medium) {
+      font-size: 4rem;
+    }
+  }
+
+  @include mq(medium) {
+    padding: 4em;
   }
 }
