@@ -8,6 +8,10 @@ nav {
   align-items: center;
   margin-bottom: 3em;
 
+  @include mq(large) {
+    padding: 1.5em 0;
+  }
+
   a {
     text-decoration: none;
     margin: 0 1.3em;
@@ -23,6 +27,10 @@ nav {
 
     @include mq(medium) {
       font-size: 2.5rem;
+    }
+
+    @include mq(large) {
+      font-size: 2.8rem;
     }
   }
 
@@ -40,6 +48,10 @@ nav {
 
     @include mq(medium) {
       font-size: 2rem;
+    }
+
+    @include mq(large) {
+      font-size: 2.3rem;
     }
 
     &:hover {

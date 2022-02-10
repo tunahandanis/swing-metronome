@@ -53,6 +53,12 @@
             right: 5%;
             width: 4em;
           }
+
+          @include mq(large) {
+            top: 10%;
+            right: 4%;
+            width: 4.9em;
+          }
         }
       }
     }
@@ -69,6 +75,10 @@
 
       @include mq(medium) {
         font-size: 1.9rem;
+      }
+
+      @include mq(large) {
+        font-size: 2.2rem;
       }
     }
   }
@@ -90,6 +100,10 @@
 
       @include mq(medium) {
         font-size: 3.4rem;
+      }
+
+      @include mq(large) {
+        font-size: 3.8rem;
       }
     }
   }
@@ -120,6 +134,10 @@
         font-size: 1.8rem;
       }
 
+      @include mq(large) {
+        font-size: 2.1rem;
+      }
+
       span {
         color: $primary-color;
         font-size: 1.8rem;
@@ -131,6 +149,10 @@
 
         @include mq(medium) {
           font-size: 2.6rem;
+        }
+
+        @include mq(large) {
+          font-size: 3rem;
         }
       }
     }

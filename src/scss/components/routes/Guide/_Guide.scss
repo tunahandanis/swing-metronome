@@ -3,6 +3,14 @@
 .guide__article {
   padding: 2em;
 
+  @include mq(medium) {
+    padding: 3em;
+  }
+
+  @include mq(large) {
+    padding: 4em 3em;
+  }
+
   .guide__title {
     font-size: 1.8rem;
     text-align: center;
@@ -16,6 +24,10 @@
 
     @include mq(medium) {
       font-size: 2.5rem;
+    }
+
+    @include mq(large) {
+      font-size: 3rem;
     }
   }
 
@@ -31,6 +43,10 @@
     @include mq(medium) {
       font-size: 1.2rem;
     }
+
+    @include mq(large) {
+      font-size: 1.3rem;
+    }
   }
 
   ul {
@@ -38,6 +54,10 @@
 
     @include mq(medium) {
       font-size: 1.2rem;
+    }
+
+    @include mq(large) {
+      font-size: 1.3rem;
     }
 
     li {

@@ -30,6 +30,12 @@
     font-size: 2.8rem;
   }
 
+  @include mq(large) {
+    width: 1.9em;
+    height: 1.9em;
+    font-size: 3.2rem;
+  }
+
   &:active {
     box-shadow: 0px 0px 0.2em #ffffff;
   }
@@ -51,6 +57,11 @@
     height: 2.4em;
   }
 
+  @include mq(large) {
+    width: 5.7em;
+    height: 2.8em;
+  }
+
   &-btn {
     position: absolute;
     top: 11%;
@@ -67,6 +78,10 @@
       top: 9%;
       width: 1.8em;
       right: 57%;
+    }
+
+    @include mq(large) {
+      width: 2.15em;
     }
   }
 
@@ -86,6 +101,10 @@
     @include mq(medium) {
       font-size: 1.1rem;
     }
+
+    @include mq(large) {
+      font-size: 1.3rem;
+    }
   }
 
   &--text-off {
@@ -103,6 +122,10 @@
 
     @include mq(medium) {
       font-size: 0.85rem;
+    }
+
+    @include mq(large) {
+      font-size: 1rem;
     }
   }
 }
@@ -131,6 +154,11 @@
       bottom: 11%;
       width: 3.9em;
       right: 7%;
+    }
+
+    @include mq(large) {
+      width: 4.9em;
+      right: 5%;
     }
   }
 
@@ -165,6 +193,12 @@
     height: 5em;
     width: 7.5em;
     font-size: 1.4rem;
+  }
+
+  @include mq(large) {
+    height: 5.5em;
+    width: 8em;
+    font-size: 1.5rem;
   }
 
   &--selected {

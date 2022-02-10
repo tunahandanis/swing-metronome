@@ -18,9 +18,17 @@
     @include mq(medium) {
       font-size: 4rem;
     }
+
+    @include mq(large) {
+      font-size: 5rem;
+    }
   }
 
   @include mq(medium) {
     padding: 4em;
+  }
+
+  @include mq(large) {
+    padding: 5em;
   }
 }

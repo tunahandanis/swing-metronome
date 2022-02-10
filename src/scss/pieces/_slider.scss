@@ -14,6 +14,11 @@
     width: 17em;
   }
 
+  @include mq(large) {
+    width: 21em;
+    margin: 1em;
+  }
+
   appearance: none;
   &:focus {
     outline: none;

@@ -18,6 +18,10 @@
     @include mq(medium) {
       font-size: 2.5rem;
     }
+
+    @include mq(large) {
+      font-size: 3rem;
+    }
   }
 
   &-switch {
@@ -40,6 +44,7 @@
     font-weight: 500;
     letter-spacing: 1px;
     font-size: 1.4rem;
+    margin-bottom: 0.8em;
 
     @include mq(small) {
       font-size: 1.5rem;
@@ -51,6 +56,10 @@
       flex-direction: column;
       align-items: center;
       margin-top: 0.5em;
+    }
+
+    @include mq(large) {
+      font-size: 2.1rem;
     }
 
     span {
@@ -65,8 +74,12 @@
         font-size: 2.2rem;
         margin-top: 0.2em;
       }
+
+      @include mq(large) {
+        font-size: 2.8rem;
+        margin-top: 0.4em;
+      }
     }
-    margin-bottom: 0.8em;
   }
 }
 
@@ -85,6 +98,10 @@
       width: 70%;
     }
 
+    @include mq(large) {
+      width: 65%;
+    }
+
     .drum-btn {
       border: none;
       font-size: 1.2rem;
@@ -92,6 +109,10 @@
 
       @include mq(medium) {
         font-size: 1.4rem;
+      }
+
+      @include mq(large) {
+        font-size: 1.5rem;
       }
     }
   }
