@@ -19,6 +19,10 @@
     margin: 1em;
   }
 
+  @include mq(tablet) {
+    width: 27em;
+  }
+
   appearance: none;
   &:focus {
     outline: none;

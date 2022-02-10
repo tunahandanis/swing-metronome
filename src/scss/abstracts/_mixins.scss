@@ -16,6 +16,10 @@
   @include mq(large) {
     height: 1.1em;
   }
+
+  @include mq(tablet) {
+    height: 1.2em;
+  }
 }
 
 @mixin thumb-style {
@@ -39,6 +43,11 @@
   @include mq(large) {
     width: 2.2em;
     height: 2.2em;
+  }
+
+  @include mq(tablet) {
+    width: 2.4em;
+    height: 2.4em;
   }
 }
 

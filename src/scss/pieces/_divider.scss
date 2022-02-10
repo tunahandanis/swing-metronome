@@ -1,5 +1,7 @@
+@use "../abstracts" as *;
+
 .divider-container {
-  width: 100%;
+  width: 100vw;
 }
 
 .divider-lines {
@@ -13,9 +15,17 @@
     position: absolute;
     margin: auto;
     height: 1.5px;
-    width: 43%;
+    width: 41%;
     top: 50%;
     border-radius: 10px;
+
+    @include mq(medium) {
+      width: 43%;
+    }
+
+    @include mq(large) {
+      width: 44%;
+    }
   }
 
   &::after {
@@ -39,4 +49,14 @@
   bottom: 0;
   margin: auto;
   transform: rotate(45deg);
+
+  @include mq(large) {
+    height: 2.1em;
+    width: 2.1em;
+  }
+
+  @include mq(tablet) {
+    height: 2.4em;
+    width: 2.4em;
+  }
 }

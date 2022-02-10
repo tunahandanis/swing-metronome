@@ -44,6 +44,11 @@
         @include mq(medium) {
           right: 56%;
         }
+
+        @include mq(tablet) {
+          width: 2.5em;
+          right: 58%;
+        }
       }
 
       &--on {
@@ -62,6 +67,11 @@
             top: 10%;
             right: 4%;
             width: 4.9em;
+          }
+
+          @include mq(tablet) {
+            width: 6em;
+            top: 9%;
           }
         }
       }
@@ -83,6 +93,10 @@
 
       @include mq(large) {
         font-size: 2.2rem;
+      }
+
+      @include mq(tablet) {
+        font-size: 2.4rem;
       }
     }
   }
@@ -109,12 +123,20 @@
       @include mq(large) {
         font-size: 3.8rem;
       }
+
+      @include mq(tablet) {
+        font-size: 4.2rem;
+      }
     }
   }
 
   &-frequency {
     padding: 3em 0 6em;
     text-align: center;
+
+    @include mq(tablet) {
+      padding: 4em 0 6em;
+    }
 
     &-control {
       display: flex;
@@ -142,6 +164,10 @@
         font-size: 2.1rem;
       }
 
+      @include mq(tablet) {
+        font-size: 2.3rem;
+      }
+
       span {
         color: $primary-color;
         font-size: 1.8rem;
@@ -157,6 +183,10 @@
 
         @include mq(large) {
           font-size: 3rem;
+        }
+
+        @include mq(tablet) {
+          font-size: 3.5rem;
         }
       }
     }
