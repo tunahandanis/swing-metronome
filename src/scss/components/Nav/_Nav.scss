@@ -12,6 +12,14 @@ nav {
     padding: 1.5em 0;
   }
 
+  @include mq(tablet) {
+    padding: 1.5em 1em;
+  }
+
+  @include mq(laptop) {
+    padding: 1.5em 2em;
+  }
+
   a {
     text-decoration: none;
     margin: 0 1.3em;
@@ -48,10 +56,6 @@ nav {
 
     @include mq(medium) {
       font-size: 2rem;
-    }
-
-    @include mq(large) {
-      font-size: 2.3rem;
     }
 
     &:hover {
