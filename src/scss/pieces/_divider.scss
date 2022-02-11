@@ -2,6 +2,10 @@
 
 .divider-container {
   width: 100vw;
+
+  @include mq(desktop) {
+    margin-top: 5em;
+  }
 }
 
 .divider-lines {
@@ -25,6 +29,10 @@
 
     @include mq(large) {
       width: 44%;
+    }
+
+    @include mq(desktop) {
+      width: 45%;
     }
   }
 
@@ -63,5 +71,10 @@
   @include mq(laptop) {
     height: 2.7em;
     width: 2.7em;
+  }
+
+  @include mq(desktop) {
+    height: 3.2em;
+    width: 3.2em;
   }
 }

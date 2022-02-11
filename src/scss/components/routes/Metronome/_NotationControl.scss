@@ -5,6 +5,10 @@
 
   .divider-container {
     margin-top: -2em;
+
+    @include mq(desktop) {
+      margin-top: 3em;
+    }
   }
 }
 
@@ -19,6 +23,10 @@
 
   @include mq(laptop) {
     flex-wrap: nowrap;
+  }
+
+  @include mq(desktop) {
+    max-width: 1100px;
   }
 
   &-item {
@@ -38,6 +46,10 @@
     .radio-btn {
       @include mq(laptop) {
         font-size: 1.4rem;
+      }
+
+      @include mq(desktop) {
+        font-size: 1.6rem;
       }
     }
   }
