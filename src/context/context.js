@@ -107,6 +107,11 @@ const MetronomeProvider = ({ children }) => {
   ============
   */
 
+  // Stop metronome when user routes to guide
+  useEffect(() => {
+    return () => stop();
+  }, []);
+
   useEffect(() => {
     // Resetting metronome after specified changes to adjust new notes
     if (isRunning) {
