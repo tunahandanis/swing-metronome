@@ -17,8 +17,14 @@ const Guide = () => {
           from the quarter beat, and the second 8th note takes the rest. Going
           by this logic, we could create a 'reverse swing' by going below 50%,
           and 50% would be just straight 8th notes, no swing at all so to speak.{" "}
+          <br /> <br />
+          <a href="https://www.youtube.com/watch?v=ybgSGQpQTB0&ab_channel=GeorgeCollier">
+            This video
+          </a>{" "}
+          by George Collier might be helpful to visualize what swing percentage
+          is.
           <br />
-          <br /> Most commonly used swing percentages are: <br /> <br />
+          <br /> Some commonly used swing percentages are: <br /> <br />
         </p>
         <ul>
           <li>57% - Septuplet Swing</li>
