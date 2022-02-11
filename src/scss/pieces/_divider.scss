@@ -59,4 +59,9 @@
     height: 2.4em;
     width: 2.4em;
   }
+
+  @include mq(laptop) {
+    height: 2.7em;
+    width: 2.7em;
+  }
 }

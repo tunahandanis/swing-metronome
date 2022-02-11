@@ -2,6 +2,7 @@
 
 .guide__article {
   padding: 2em;
+  max-width: 1000px;
 
   @include mq(medium) {
     padding: 3em;

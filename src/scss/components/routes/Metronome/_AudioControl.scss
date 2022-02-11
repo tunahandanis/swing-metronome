@@ -10,6 +10,7 @@
 .audio__control {
   text-align: center;
   padding: 1em 1.5em;
+  margin: 4em 0;
 
   &-title {
     font-size: 1.8rem;
@@ -33,6 +34,10 @@
     @include mq(tablet) {
       font-size: 2rem;
     }
+
+    @include mq(laptop) {
+      font-size: 2.5rem;
+    }
   }
 
   &-switch {
@@ -44,10 +49,13 @@
         width: 6em;
         font-size: 1.3rem;
       }
+
+      @include mq(laptop) {
+        height: 4.4em;
+        width: 7em;
+      }
     }
   }
-
-  margin: 4em 0;
 }
 
 .audio__artificial {
@@ -62,6 +70,11 @@
         height: 1.4em;
         width: 1.4em;
         font-size: 2.4rem;
+      }
+
+      @include mq(laptop) {
+        height: 1.7em;
+        width: 1.7em;
       }
     }
 
@@ -83,6 +96,10 @@
           width: 1.8em;
           height: 1.8em;
         }
+      }
+
+      @include mq(laptop) {
+        width: 15em;
       }
     }
   }
@@ -159,6 +176,10 @@
 
     @include mq(tablet) {
       width: 80%;
+    }
+
+    @include mq(laptop) {
+      width: 90%;
     }
 
     .drum-btn {

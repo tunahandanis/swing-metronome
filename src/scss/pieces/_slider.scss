@@ -23,6 +23,11 @@
     width: 27em;
   }
 
+  @include mq(laptop) {
+    width: 33em;
+    margin: 2em;
+  }
+
   appearance: none;
   &:focus {
     outline: none;

@@ -14,7 +14,12 @@
   justify-content: center;
   flex-wrap: wrap;
   border-radius: 5px;
-  margin-top: -1em;
+  max-width: 1000px;
+  margin: -1em auto 0em;
+
+  @include mq(laptop) {
+    flex-wrap: nowrap;
+  }
 
   &-item {
     flex: 0 0 40%;
@@ -23,6 +28,17 @@
 
     @include mq(medium) {
       margin: 2em 0;
+    }
+
+    @include mq(laptop) {
+      flex: auto;
+      margin: 4em 1em;
+    }
+
+    .radio-btn {
+      @include mq(laptop) {
+        font-size: 1.4rem;
+      }
     }
   }
 }
