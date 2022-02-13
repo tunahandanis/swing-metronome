@@ -18,7 +18,10 @@ const Guide = () => {
           by this logic, we could create a 'reverse swing' by going below 50%,
           and 50% would be just straight 8th notes, no swing at all so to speak.{" "}
           <br /> <br />
-          <a href="https://www.youtube.com/watch?v=ybgSGQpQTB0&ab_channel=GeorgeCollier">
+          <a
+            href="https://www.youtube.com/watch?v=ybgSGQpQTB0&ab_channel=GeorgeCollier"
+            target="_blank"
+          >
             This video
           </a>{" "}
           by George Collier might be helpful to visualize what swing percentage
@@ -40,11 +43,12 @@ const Guide = () => {
         <p className="guide__para">
           You might've noticed that you could set the metronome to play duplet,
           triplet and quadruplet notes instead of just quarter notes. In these
-          cases, I called the first note of the beat 'First Note' and the
+          cases, the first note of the beat is called 'First Note' and the
           remaining ones are 'Sub Notes'. So, if you set the metronome to play
           triplets, the first 8th note will be 'First Note' and the remaining 2
-          will be 'Sub Notes'. <br /> <br />I made a distinction to allow user
-          to easily customize the sounds of 'First Note' and 'Sub Notes'.
+          will be 'Sub Notes'. <br /> <br />
+          The distinction is there to allow user to easily customize the sounds
+          of 'First Note' and 'Sub Notes'.
         </p>
       </article>
 
@@ -67,9 +71,9 @@ const Guide = () => {
           In the bottom part of the 'Swing Metronome', the user could easily
           customize the sounds for 'First Note' and 'Sub Note'. <br /> <br />{" "}
           There are 2 options, drum sounds and artificial sound. Drum sounds are
-          real recordings. You could pick whichever you want to play together or
-          seperately for both 'First Note' and 'Sub Notes'. Artificial sound is
-          a 'beep' sound at a specific frequency set by the user.
+          real recordings. You could pick whichever you want to play, together
+          or seperately for both 'First Note' and 'Sub Notes'. Artificial sound
+          is a 'beep' sound at a specific frequency set by the user.
         </p>
       </article>
     </main>

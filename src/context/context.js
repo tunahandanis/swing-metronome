@@ -31,7 +31,7 @@ const MetronomeContext = React.createContext();
 const initialState = {
   isRunning: false,
   tempo: 60,
-  swingPercentage: 50,
+  swingPercentage: 66,
   subdivision: "First",
   barLength: 2,
   isStressing: false,
