@@ -22,6 +22,8 @@ import hihatOpenFile from "../assets/audio/hihat open.mp3";
 import sticksFile from "../assets/audio/sticks.mp3";
 import bassDrumFile from "../assets/audio/bass drum.mp3";
 
+import { AudioContext } from "standardized-audio-context";
+
 const MetronomeContext = React.createContext();
 
 // INITIAL STATE FOR REDUCER
