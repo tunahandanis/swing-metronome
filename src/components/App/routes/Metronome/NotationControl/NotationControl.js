@@ -41,6 +41,7 @@ const NotationControl = () => {
       <ul className="notation__list">
         <li className="notation__list-item">
           <button
+            aria-label="set subdivision to quarter"
             onClick={() => changeSubdivision("First")}
             className={`btn radio-btn ${
               subdivision === "First" && "radio-btn--selected"
@@ -51,6 +52,7 @@ const NotationControl = () => {
         </li>
         <li className="notation__list-item">
           <button
+            aria-label="set subdivision to duplet"
             onClick={() => changeSubdivision("Duplet")}
             className={`btn radio-btn ${
               subdivision === "Duplet" && "radio-btn--selected"
@@ -61,6 +63,7 @@ const NotationControl = () => {
         </li>
         <li className="notation__list-item">
           <button
+            aria-label="set subdivision to quadruplet"
             onClick={() => changeSubdivision("Quadruplet")}
             className={`btn radio-btn ${
               subdivision === "Quadruplet" && "radio-btn--selected"
@@ -71,6 +74,7 @@ const NotationControl = () => {
         </li>
         <li className="notation__list-item">
           <button
+            aria-label="set subdivision to triplet"
             onClick={() => changeSubdivision("Triplet")}
             className={`btn radio-btn ${
               subdivision === "Triplet" && "radio-btn--selected"
@@ -85,6 +89,7 @@ const NotationControl = () => {
         <div className="notation__stress-toggle">
           <h2 className="notation__stress-toggle-text">Stress</h2>
           <div
+            aria-label="start/stop stressing"
             onClick={toggleStressing}
             className={`toggle ${isStressing && "toggle--on"}`}
           >
@@ -95,11 +100,19 @@ const NotationControl = () => {
         </div>
 
         <div className="notation__stress-control">
-          <button onClick={beatDown} className="btn up-btn">
+          <button
+            aria-label="decrease bar length"
+            onClick={beatDown}
+            className="btn up-btn"
+          >
             &ndash;
           </button>
           <h3 className="notation__stress-text">{barLength}</h3>
-          <button onClick={beatUp} className="btn down-btn">
+          <button
+            aria-label="increase bar length"
+            onClick={beatUp}
+            className="btn down-btn"
+          >
             +
           </button>
         </div>
@@ -109,10 +122,15 @@ const NotationControl = () => {
             Stress Frequency: <span>{stressFrequency}</span>
           </h2>
           <div className="notation__stress-frequency-control">
-            <button onClick={stressDown} className="btn down-btn">
+            <button
+              aria-label="decrease stress frequency"
+              onClick={stressDown}
+              className="btn down-btn"
+            >
               &ndash;
             </button>
             <input
+              aria-label="control stress frequency"
               className="slider stress-frequency-slider"
               type="range"
               min={200}
@@ -122,7 +140,11 @@ const NotationControl = () => {
               value={stressFrequency}
               onChange={(e) => slideStressFrequency(parseInt(e.target.value))}
             />
-            <button onClick={stressUp} className="btn down-btn">
+            <button
+              aria-label="increase stress frequency"
+              onClick={stressUp}
+              className="btn down-btn"
+            >
               +
             </button>
           </div>

@@ -46,10 +46,15 @@ const MetronomeInterface = () => {
           <span className="interface__tempo-text-span">{tempo}</span>BPM
         </h1>
         <div className="interface__tempo-control">
-          <button onClick={tempoStepDown} className="btn down-btn">
+          <button
+            aria-label="decrease tempo"
+            onClick={tempoStepDown}
+            className="btn down-btn"
+          >
             &ndash;
           </button>
           <input
+            aria-label="control tempo"
             className="slider tempo-slider"
             ref={rangeRef}
             type="range"
@@ -58,12 +63,20 @@ const MetronomeInterface = () => {
             value={tempo}
             onChange={(e) => slideTempo(parseInt(e.target.value))}
           />
-          <button onClick={tempoStepUp} className="btn up-btn">
+          <button
+            aria-label="increase tempo"
+            onClick={tempoStepUp}
+            className="btn up-btn"
+          >
             +
           </button>
         </div>
 
-        <button onClick={startStop} className="btn start-stop-btn">
+        <button
+          aria-label="start/stop metronome"
+          onClick={startStop}
+          className="btn start-stop-btn"
+        >
           {isRunning ? (
             <PauseIcon className="start-stop-btn-icon" />
           ) : (
@@ -76,6 +89,7 @@ const MetronomeInterface = () => {
         <div className="interface__swing-toggle">
           <h2 className="interface__swing-toggle-title">Swing</h2>
           <div
+            aria-label="start/stop swing"
             onClick={toggleSwing}
             className={`toggle ${swingActive && "toggle--on"}`}
           >
@@ -95,10 +109,15 @@ const MetronomeInterface = () => {
             </span>
           </h1>
           <div className="interface__swing-control">
-            <button onClick={swingStepDown} className="btn down-btn">
+            <button
+              aria-label="decrease swing"
+              onClick={swingStepDown}
+              className="btn down-btn"
+            >
               &ndash;
             </button>{" "}
             <input
+              aria-label="control swing"
               className="slider swing-slider"
               type="range"
               min={0}
@@ -106,7 +125,11 @@ const MetronomeInterface = () => {
               value={swingPercentage}
               onChange={(e) => slideSwing(parseInt(e.target.value))}
             />
-            <button onClick={swingStepUp} className="btn up-btn">
+            <button
+              aria-label="increase swing"
+              onClick={swingStepUp}
+              className="btn up-btn"
+            >
               +
             </button>
           </div>

@@ -56,6 +56,7 @@ const AudioControl = () => {
         <h1 className="audio__control-title">First Note</h1>
         <div className="audio__control-switch">
           <button
+            aria-label="set first note to artificial sound"
             className={`btn radio-btn ${
               firstSoundType === "Artificial" && "radio-btn--selected"
             }`}
@@ -70,6 +71,7 @@ const AudioControl = () => {
             Artificial
           </button>
           <button
+            aria-label="set first note to drum sounds"
             className={`btn radio-btn ${
               firstSoundType === "Drum" && "radio-btn--selected"
             }`}
@@ -89,10 +91,15 @@ const AudioControl = () => {
               Frequency: <span>{firstFrequency}</span>
             </h2>
             <div className="audio__artificial-control">
-              <button onClick={firstDown} className="btn down-btn">
+              <button
+                aria-label="decrease first note frequency"
+                onClick={firstDown}
+                className="btn down-btn"
+              >
                 &ndash;
               </button>
               <input
+                aria-label="control first note frequency"
                 className="slider type-frequency-slider"
                 type="range"
                 min={200}
@@ -102,7 +109,11 @@ const AudioControl = () => {
                 value={firstFrequency}
                 onChange={(e) => slideFirstFrequency(parseInt(e.target.value))}
               />
-              <button onClick={firstUp} className="btn down-btn">
+              <button
+                aria-label="increase first note frequency"
+                onClick={firstUp}
+                className="btn down-btn"
+              >
                 +
               </button>
             </div>
@@ -121,7 +132,12 @@ const AudioControl = () => {
                 firstDrumAudios.snare && "audio__drum-item--selected"
               }`}
             >
-              <button className="btn drum-btn">Snare</button>
+              <button
+                aria-label="toggle snare sound for first note"
+                className="btn drum-btn"
+              >
+                Snare
+              </button>
             </li>
             <li
               onClick={() => toggleFirstDrumAudios("hihatClosed")}
@@ -129,7 +145,12 @@ const AudioControl = () => {
                 firstDrumAudios.hihatClosed && "audio__drum-item--selected"
               }`}
             >
-              <button className="btn drum-btn">Hi-hat Closed</button>
+              <button
+                aria-label="toggle hi-hat closed sound for first note"
+                className="btn drum-btn"
+              >
+                Hi-hat Closed
+              </button>
             </li>
             <li
               onClick={() => toggleFirstDrumAudios("hihatOpen")}
@@ -137,7 +158,12 @@ const AudioControl = () => {
                 firstDrumAudios.hihatOpen && "audio__drum-item--selected"
               }`}
             >
-              <button className="btn drum-btn">Hi-hat Open</button>
+              <button
+                aria-label="toggle hi-hat open sound for first note"
+                className="btn drum-btn"
+              >
+                Hi-hat Open
+              </button>
             </li>
             <li
               onClick={() => toggleFirstDrumAudios("bassDrum")}
@@ -145,7 +171,12 @@ const AudioControl = () => {
                 firstDrumAudios.bassDrum && "audio__drum-item--selected"
               }`}
             >
-              <button className="btn drum-btn">Bass Drum</button>
+              <button
+                aria-label="toggle bass drum sound for first note"
+                className="btn drum-btn"
+              >
+                Bass Drum
+              </button>
             </li>
             <li
               onClick={() => toggleFirstDrumAudios("sticks")}
@@ -153,7 +184,12 @@ const AudioControl = () => {
                 firstDrumAudios.sticks && "audio__drum-item--selected"
               }`}
             >
-              <button className="btn drum-btn">Sticks</button>
+              <button
+                aria-label="toggle sticks sound for first note"
+                className="btn drum-btn"
+              >
+                Sticks
+              </button>
             </li>
           </ul>
         ) : null}
@@ -163,6 +199,7 @@ const AudioControl = () => {
         <h1 className="audio__control-title">Sub Note</h1>
         <div className="audio__control-switch">
           <button
+            aria-label="set sub note to artificial sound"
             className={`btn radio-btn ${
               subSoundType === "Artificial" && "radio-btn--selected"
             }`}
@@ -176,6 +213,7 @@ const AudioControl = () => {
             Artificial
           </button>
           <button
+            aria-label="set sub note to drum sound"
             className={`btn radio-btn ${
               subSoundType === "Drum" && "radio-btn--selected"
             }`}
@@ -195,10 +233,15 @@ const AudioControl = () => {
               Frequency: <span>{subFrequency}</span>
             </h2>
             <div className="audio__artificial-control">
-              <button onClick={subDown} className="btn down-btn">
+              <button
+                aria-label="decrease sub note frequency"
+                onClick={subDown}
+                className="btn down-btn"
+              >
                 &ndash;
               </button>
               <input
+                aria-label="control sub note frequency"
                 className="slider type-frequency-slider"
                 type="range"
                 min={200}
@@ -208,7 +251,11 @@ const AudioControl = () => {
                 ref={subRangeRef}
                 onChange={(e) => slideSubFrequency(parseInt(e.target.value))}
               />
-              <button onClick={subUp} className="btn down-btn">
+              <button
+                aria-label="increase sub note frequency"
+                onClick={subUp}
+                className="btn down-btn"
+              >
                 +
               </button>
             </div>
@@ -227,7 +274,12 @@ const AudioControl = () => {
                 subDrumAudios.snare && "audio__drum-item--selected"
               }`}
             >
-              <button className="btn drum-btn">Snare</button>
+              <button
+                aria-label="toggle snare sound for sub note"
+                className="btn drum-btn"
+              >
+                Snare
+              </button>
             </li>
             <li
               onClick={() => toggleSubDrumAudios("hihatClosed")}
@@ -235,7 +287,12 @@ const AudioControl = () => {
                 subDrumAudios.hihatClosed && "audio__drum-item--selected"
               }`}
             >
-              <button className="btn drum-btn">Hi-hat Closed</button>
+              <button
+                aria-label="toggle hi-hat closed sound for sub note"
+                className="btn drum-btn"
+              >
+                Hi-hat Closed
+              </button>
             </li>
             <li
               onClick={() => toggleSubDrumAudios("hihatOpen")}
@@ -243,7 +300,12 @@ const AudioControl = () => {
                 subDrumAudios.hihatOpen && "audio__drum-item--selected"
               }`}
             >
-              <button className="btn drum-btn">Hi-hat Open</button>
+              <button
+                aria-label="toggle hi-hat open sound for sub note"
+                className="btn drum-btn"
+              >
+                Hi-hat Open
+              </button>
             </li>
             <li
               onClick={() => toggleSubDrumAudios("bassDrum")}
@@ -251,7 +313,12 @@ const AudioControl = () => {
                 subDrumAudios.bassDrum && "audio__drum-item--selected"
               }`}
             >
-              <button className="btn drum-btn">Bass Drum</button>
+              <button
+                aria-label="toggle bass drum sound for sub note"
+                className="btn drum-btn"
+              >
+                Bass Drum
+              </button>
             </li>
             <li
               onClick={() => toggleSubDrumAudios("sticks")}
@@ -259,7 +326,12 @@ const AudioControl = () => {
                 subDrumAudios.sticks && "audio__drum-item--selected"
               }`}
             >
-              <button className="btn drum-btn">Sticks</button>
+              <button
+                aria-label="toggle sticks sound for sub note"
+                className="btn drum-btn"
+              >
+                Sticks
+              </button>
             </li>
           </ul>
         ) : null}

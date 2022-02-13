@@ -19,6 +19,7 @@ const Guide = () => {
           and 50% would be just straight 8th notes, no swing at all so to speak.{" "}
           <br /> <br />
           <a
+            aria-label="open youtube video explaining swing percentage(visual and auditory video, no commentary)"
             href="https://www.youtube.com/watch?v=ybgSGQpQTB0&ab_channel=GeorgeCollier"
             target="_blank"
           >
