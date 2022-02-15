@@ -22,6 +22,7 @@ const Guide = () => {
             aria-label="open youtube video explaining swing percentage(visual and auditory video, no commentary)"
             href="https://www.youtube.com/watch?v=ybgSGQpQTB0&ab_channel=GeorgeCollier"
             target="_blank"
+            rel="noreferrer"
           >
             This video
           </a>{" "}
