@@ -1,6 +1,7 @@
-import { BrowserRouter, Route, Switch, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Metronome from "./routes/Metronome/Metronome";
 import Guide from "./routes/Guide/Guide";
+import NotFound from "./routes/NotFound/NotFound";
 import Nav from "./Nav/Nav";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Routes>
+          <Route path="*" element={<NotFound />} />
           <Route exact path="/" element={<Metronome />} />
           <Route path="/guide" element={<Guide />} />
         </Routes>
