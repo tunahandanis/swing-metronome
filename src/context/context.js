@@ -21,6 +21,7 @@ import hihatClosedFile from "../assets/audio/hihat closed.mp3";
 import hihatOpenFile from "../assets/audio/hihat open.mp3";
 import sticksFile from "../assets/audio/sticks.mp3";
 import bassDrumFile from "../assets/audio/bass drum.mp3";
+import silence from "../assets/audio/silence.mp3";
 
 import { AudioContext } from "standardized-audio-context";
 
@@ -328,8 +329,11 @@ const MetronomeProvider = ({ children }) => {
     // If it's already running, return
     if (isRunning) return;
 
-    // Creating audio context and fetching/processing audio files
+    // Creating audio context, playing dummy sound for iOS and fetching/processing audio files
     if (audioContext.current === null) {
+      let audio = new Audio(silence);
+      audio.play();
+
       audioContext.current = new AudioContext();
 
       const audioFiles = {
