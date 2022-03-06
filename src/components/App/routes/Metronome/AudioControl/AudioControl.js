@@ -191,6 +191,19 @@ const AudioControl = () => {
                 Sticks
               </button>
             </li>
+            <li
+              onClick={() => toggleFirstDrumAudios("rideCymbal")}
+              className={`audio__drum-item ${
+                firstDrumAudios.rideCymbal && "audio__drum-item--selected"
+              }`}
+            >
+              <button
+                aria-label="toggle ride cymbal sound for first note"
+                className="btn drum-btn"
+              >
+                Ride Cymbal
+              </button>
+            </li>
           </ul>
         ) : null}
       </div>
@@ -331,6 +344,19 @@ const AudioControl = () => {
                 className="btn drum-btn"
               >
                 Sticks
+              </button>
+            </li>
+            <li
+              onClick={() => toggleSubDrumAudios("rideCymbal")}
+              className={`audio__drum-item ${
+                subDrumAudios.rideCymbal && "audio__drum-item--selected"
+              }`}
+            >
+              <button
+                aria-label="toggle ride cymbal sound for sub note"
+                className="btn drum-btn"
+              >
+                Ride Cymbal
               </button>
             </li>
           </ul>

@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useContext,
-  useReducer,
-} from "react";
+import React, { useEffect, useRef, useContext, useReducer } from "react";
 
 import reducer from "../reducer/reducer";
 import ACTIONS from "../reducer/actionTypes";
@@ -12,7 +6,6 @@ import ACTIONS from "../reducer/actionTypes";
 import {
   scheduleAheadTime,
   lookahead,
-  noteLength,
   currentSubLength,
 } from "../config/metronomeConfig";
 
@@ -21,6 +14,8 @@ import hihatClosedFile from "../assets/audio/hihat closed.mp3";
 import hihatOpenFile from "../assets/audio/hihat open.mp3";
 import sticksFile from "../assets/audio/sticks.mp3";
 import bassDrumFile from "../assets/audio/bass drum.mp3";
+import rideCymbalFile from "../assets/audio/ride cymbal.mp3";
+
 import silence from "../assets/audio/silence.mp3";
 
 import { AudioContext } from "standardized-audio-context";
@@ -42,13 +37,15 @@ const initialState = {
     hihatClosed: false,
     bassDrum: false,
     sticks: false,
+    rideCymbal: false,
   },
   subDrumAudios: {
     snare: false,
     hihatOpen: false,
     hihatClosed: false,
     bassDrum: false,
-    sticks: true,
+    sticks: false,
+    rideCymbal: true,
   },
   firstFrequency: 800,
   subFrequency: 600,
@@ -342,6 +339,7 @@ const MetronomeProvider = ({ children }) => {
         hihatOpen: hihatOpenFile,
         sticks: sticksFile,
         bassDrum: bassDrumFile,
+        rideCymbal: rideCymbalFile,
       };
 
       for (let audioName in audioFiles) {
@@ -423,7 +421,7 @@ const MetronomeProvider = ({ children }) => {
               source.connect(audioContext.current.destination);
 
               source.start(time);
-              source.stop(time + 0.35);
+              source.stop(time + 0.5);
             }
           }
         }
@@ -448,7 +446,7 @@ const MetronomeProvider = ({ children }) => {
               source.connect(audioContext.current.destination);
 
               source.start(time);
-              source.stop(time + 0.35);
+              source.stop(time + 0.5);
             }
           }
         }
